@@ -12,7 +12,12 @@ jobs:
       - node/install-packages:
           cache-path: node_modules
           override-ci-command: npm i
-      - run: yarn dev
+      - run:
+          name: Run Tests
+          command: npm run test
+      - run: 
+          name: Build dashboard
+          command: npm run dev
 
 workflows:
   version: 2
