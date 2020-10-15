@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/app.scss';
+import './styles/App.scss';
 import styled from 'styled-components';
 import { Router, Sidebar, Header } from './components';
 
