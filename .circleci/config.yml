@@ -1,14 +1,21 @@
 version: 2.1
+
+orbs:
+  node: circleci/node@3.0.1
+
 jobs:
   build:
+    executor: node/default
     steps:
       - checkout
-      - run: echo "build project"
-      - npm install
-      - npm run build
-orbs:
-  node: circleci/node@3.0.0
+      - node/install-npm
+      - node/install-packages:
+          cache-path: node_modules
+          override-ci-command: npm i
+      - run: npm run build
+
 workflows:
-  node-tests:
+  version: 2
+  build_and_test:
     jobs:
       - build
