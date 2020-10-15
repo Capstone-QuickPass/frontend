@@ -8,10 +8,18 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/install-npm
-      - node/install-packages:
-          cache-path: node_modules
-          override-ci-command: npm i
+      - restore_cache:
+        name: Restore Yarn Package Cache
+        keys:
+          - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+        name: Install Dependencies
+        command: yarn install --immutable
+      - save_cache:
+        name: Save Yarn Package Cache
+        key: yarn-packages-{{ checksum "yarn.lock" }}
+        paths:
+          - ~/.cache/yarn
       - run:
           name: Run Tests
           command: yarn test
