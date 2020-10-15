@@ -44,7 +44,7 @@ const TileCounter = () => {
       
    return(
       <TileContainer>
-         <CountTitle>Users</CountTitle>
+         <CountTitle>Total Users</CountTitle>
          <NumberDisplay>{count}</NumberDisplay>
       </TileContainer>
    )
