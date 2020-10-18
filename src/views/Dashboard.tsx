@@ -1,5 +1,6 @@
 import React, { useState , useEffect} from 'react';
 import styled from 'styled-components';
+import RecentUsers from '../components/Dashboard/RecentUsers';
 
 const Display = styled.div`
    display: flex;
@@ -20,7 +21,7 @@ const TileContainer = styled.div`
 
 const CountTitle = styled.p`
    font-size: 25px;
-   color: dimgray;
+   color: black;
    font-family: 'Courier New', Courier, monospace;
    margin: 0;
 `
@@ -55,6 +56,7 @@ const Dashboard = () => {
    return(
       <Display>
          {TileCounter()}
+         {RecentUsers()}
       </Display>
    );
 }
