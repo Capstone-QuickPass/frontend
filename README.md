@@ -37,5 +37,5 @@
 ## Merging a pull request
 1. Make sure your tests are passing
 2. Make sure CircleCI is passing
-3. Have at least one other developer approve your changes
+3. Have at least one other developer approves your changes
 4. Profit 👌
