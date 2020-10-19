@@ -16,8 +16,8 @@ const UserContainer = styled.div`
   /* background-color: pink; */
   display: grid;
   grid-template-columns: repeat(4, auto);
-  grid-template-columns: 50px 30px 70px 70px;
-  column-gap: 80px;
+  grid-template-columns: 50px 30px 60px 70px;
+  column-gap: 100px;
   width: 500px;
   border-bottom: 1px solid gray;
 `
@@ -40,7 +40,7 @@ const HeaderUl = styled.ul`
   grid-template-columns: repeat(4,auto);
   list-style: none;
   padding-inline-start: 0;
-  gap: 40px;
+  gap: 30px;
 `
 
 const HeaderList = styled.li`
@@ -50,7 +50,6 @@ const HeaderItems = [
   "User",
   "Score",
   "Time",
-  "Temperature"
 ]
 
 const TempUsers = [
@@ -58,19 +57,19 @@ const TempUsers = [
         Name: "Daniel \n Shwan",
         Score: 69,
         Time: "6:09pm",
-        Temperature: "36℃"
+        // Temperature: "36℃"
     },
     {
         Name: "Sanat Gupta",
         Score: 96,
         Time: "9:06pm",
-        Temperature: "35.4 ℃"
+        // Temperature: "35.4 ℃"
     },
     {
         Name: "Bhala Chen",
         Score: 54,
         Time: "7:02pm",
-        Temperature: "34.1 ℃"
+        // Temperature: "34.1 ℃"
     }
 ]
 
@@ -102,7 +101,6 @@ const UserCardDisplay = () => {
                       <p>{item.Name}</p>
                       <p>{item.Score}</p>
                       <p> {item.Time}</p>
-                      <p> {item.Temperature}</p>
                   </UserContainer>
                 </>
             )
