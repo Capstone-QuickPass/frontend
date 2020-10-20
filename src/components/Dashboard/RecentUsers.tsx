@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
+
 const Container = styled.div`
   background-color: ghostwhite;
   box-shadow: 2px 2px gainsboro;
@@ -123,21 +124,6 @@ const UserCardDisplay = () => {
       })}
     </>
   )
-    // return(
-    //     user.map((item,index) => {
-    //         return(
-    //             <>
-    //               <UserContainer key={index}>
-    //                 <p>{item.completed}</p>
-    //                   {/* <p>{item.Name}</p>
-    //                   <p>{item.Score}</p>
-    //                   <p> {item.Time}</p>
-    //                   <p> {item.Temperature}</p> */}
-    //               </UserContainer>
-    //             </>
-    //         )
-    //     })
-    // )
 }
 
 const RecentUsers = () => {

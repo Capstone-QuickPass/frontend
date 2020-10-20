@@ -1,3 +1,4 @@
 import RecentUsers from './RecentUsers';
 import TotalUsers from './TotalUsers';
-export {RecentUsers, TotalUsers}
+import UsersGraph from './UsersGraph';
+export { RecentUsers, TotalUsers, UsersGraph };
