@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+
 
 const Container = styled.div`
   background-color: ghostwhite;
@@ -7,7 +8,7 @@ const Container = styled.div`
   border-radius: 10px;
   padding: 15px;
   height: 300px;
-  width: 500px;
+  width: 650px;
   display: flex;
   flex-direction: column;
 `
@@ -16,9 +17,9 @@ const UserContainer = styled.div`
   /* background-color: pink; */
   display: grid;
   grid-template-columns: repeat(4, auto);
-  grid-template-columns: 50px 30px 60px 70px;
-  column-gap: 100px;
-  width: 500px;
+  grid-template-columns: 90px 80px 80px;
+  column-gap: 200px;
+  width: 650px;
   border-bottom: 1px solid gray;
 `
 
@@ -40,7 +41,7 @@ const HeaderUl = styled.ul`
   grid-template-columns: repeat(4,auto);
   list-style: none;
   padding-inline-start: 0;
-  gap: 30px;
+  gap: 250px;
 `
 
 const HeaderList = styled.li`
@@ -49,7 +50,7 @@ const HeaderList = styled.li`
 const HeaderItems = [
   "User",
   "Score",
-  "Time",
+  "Time"
 ]
 
 const TempUsers = [
@@ -57,19 +58,16 @@ const TempUsers = [
         Name: "Daniel \n Shwan",
         Score: 69,
         Time: "6:09pm",
-        // Temperature: "36℃"
     },
     {
         Name: "Sanat Gupta",
         Score: 96,
         Time: "9:06pm",
-        // Temperature: "35.4 ℃"
     },
     {
         Name: "Bhala Chen",
         Score: 54,
         Time: "7:02pm",
-        // Temperature: "34.1 ℃"
     }
 ]
 
@@ -93,19 +91,35 @@ const HeaderDisplay = () => {
 
 
 const UserCardDisplay = () => {
-    return(
-        TempUsers.map((item,index) => {
-            return(
-                <>
-                  <UserContainer key={index}>
-                      <p>{item.Name}</p>
-                      <p>{item.Score}</p>
-                      <p> {item.Time}</p>
-                  </UserContainer>
-                </>
-            )
-        })
+
+  const [user, setUser] = useState<any[]>([]);
+
+  useEffect( () => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    await fetch(
+      'http://localhost:8080/personlist'
     )
+      .then(response => response.json())
+      .then(receivedData => setUser(receivedData.personList));
+  }
+
+  return(
+    <>
+      {console.log(user)}
+      {user.map((user,index) => {
+        return(
+        <UserContainer key={index}>
+          <p>{user._id}</p>
+          <p>{user.score}</p>
+          <p>{user.time}</p>
+        </UserContainer>
+        )
+      })}
+    </>
+  )
 }
 
 const RecentUsers = () => {
@@ -118,7 +132,6 @@ const RecentUsers = () => {
             {UserCardDisplay()}
         </Container>
     )
-
 }
 
 export default RecentUsers
