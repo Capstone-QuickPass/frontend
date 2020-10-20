@@ -23,23 +23,46 @@ const NumberDisplay = styled.p`
    margin: 20px;
 `
 
+const UserCount = () => {
+   const [count, setCount] = useState<any[]>([]);
+
+  useEffect( () => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    await fetch(
+      'http://localhost:8080/personlist'
+    )
+      .then(response => response.json())
+      .then(receivedData => setCount(receivedData.personListSize));
+  }
+
+  return (
+     <>
+      <div>{count}</div>
+     </>
+  )
+
+}
+
 const TotalUsers = () => {
 
-    const [count, setCount] = useState(69);
+   //  const [count, setCount] = useState(69);
  
-    useEffect(() => {
-       const interval = setInterval(() => {
-       setCount(count => count + 1);
-     }, 1500);
-       return () => {
-       clearInterval(interval);
-     };
-    }, []);
+   //  useEffect(() => {
+   //     const interval = setInterval(() => {
+   //     setCount(count => count + 1);
+   //   }, 1500);
+   //     return () => {
+   //     clearInterval(interval);
+   //   };
+   //  }, []);
        
     return(
        <TileContainer>
           <CountTitle>Total Users</CountTitle>
-          <NumberDisplay>{count}</NumberDisplay>
+          <NumberDisplay>{UserCount()}</NumberDisplay>
        </TileContainer>
     )
  }
