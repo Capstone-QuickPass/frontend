@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 
 const Container = styled.div`
   background-color: ghostwhite;
@@ -58,19 +57,16 @@ const TempUsers = [
         Name: "Daniel \n Shwan",
         Score: 69,
         Time: "6:09pm",
-        // Temperature: "36℃"
     },
     {
         Name: "Sanat Gupta",
         Score: 96,
         Time: "9:06pm",
-        // Temperature: "35.4 ℃"
     },
     {
         Name: "Bhala Chen",
         Score: 54,
         Time: "7:02pm",
-        // Temperature: "34.1 ℃"
     }
 ]
 
@@ -123,21 +119,6 @@ const UserCardDisplay = () => {
       })}
     </>
   )
-    // return(
-    //     user.map((item,index) => {
-    //         return(
-    //             <>
-    //               <UserContainer key={index}>
-    //                 <p>{item.completed}</p>
-    //                   {/* <p>{item.Name}</p>
-    //                   <p>{item.Score}</p>
-    //                   <p> {item.Time}</p>
-    //                   <p> {item.Temperature}</p> */}
-    //               </UserContainer>
-    //             </>
-    //         )
-    //     })
-    // )
 }
 
 const RecentUsers = () => {
