@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import useInterval from '@use-it/interval';
 
 
 const Container = styled.div`
@@ -97,6 +98,10 @@ const UserCardDisplay = () => {
   useEffect( () => {
     fetchData();
   }, []);
+
+  useInterval(() => {
+    fetchData() 
+  }, 2000);
 
   const fetchData = async () => {
     await fetch(
