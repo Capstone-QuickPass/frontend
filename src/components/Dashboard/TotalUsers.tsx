@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
+import useInterval from '@use-it/interval';
 
 const TileContainer = styled.div`
    height: 300px;
@@ -23,12 +24,18 @@ const NumberDisplay = styled.p`
    margin: 20px;
 `
 
+
+
 const UserCount = () => {
    const [count, setCount] = useState<any[]>([]);
 
   useEffect( () => {
     fetchData();
   }, []);
+
+  useInterval(() => {
+   fetchData()
+ }, 2000);
 
   const fetchData = async () => {
     await fetch(
@@ -45,6 +52,8 @@ const UserCount = () => {
   )
 
 }
+
+
 
 const TotalUsers = () => {
 
