@@ -12,6 +12,7 @@ const Container = styled.div`
   width: 650px;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 `
 
 const UserContainer = styled.div`
@@ -52,24 +53,6 @@ const HeaderItems = [
   "User",
   "Score",
   "Time"
-]
-
-const TempUsers = [
-    {
-        Name: "Daniel \n Shwan",
-        Score: 69,
-        Time: "6:09pm",
-    },
-    {
-        Name: "Sanat Gupta",
-        Score: 96,
-        Time: "9:06pm",
-    },
-    {
-        Name: "Bhala Chen",
-        Score: 54,
-        Time: "7:02pm",
-    }
 ]
 
 const HeaderDisplay = () => {
