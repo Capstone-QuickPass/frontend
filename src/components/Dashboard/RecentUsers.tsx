@@ -12,7 +12,6 @@ const Container = styled.div`
   width: 650px;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
 `
 
 const UserContainer = styled.div`
@@ -23,6 +22,10 @@ const UserContainer = styled.div`
   column-gap: 200px;
   width: 650px;
   border-bottom: 1px solid gray;
+`
+
+const GridContainer = styled.div`
+  overflow-y: scroll;
 `
 
 const Separator = styled.hr`
@@ -115,9 +118,11 @@ const RecentUsers = () => {
         <Container>
             <UserTitle>Recent Users</UserTitle>
                 <Separator/>
-                {HeaderDisplay()}
+                  {HeaderDisplay()}
                 <Separator/>
-            {UserCardDisplay()}
+                <GridContainer>
+                  {UserCardDisplay()}
+                </GridContainer>
         </Container>
     )
 }
