@@ -118,11 +118,11 @@ const RecentUsers = () => {
         <Container>
             <UserTitle>Recent Users</UserTitle>
                 <Separator/>
-                {HeaderDisplay()}
+                  {HeaderDisplay()}
                 <Separator/>
                 <GridContainer>
-            {UserCardDisplay()}
-            </GridContainer>
+                  {UserCardDisplay()}
+                </GridContainer>
         </Container>
     )
 }
