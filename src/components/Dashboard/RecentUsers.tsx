@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useInterval from '@use-it/interval';
 
-
 const Container = styled.div`
   background-color: ghostwhite;
   box-shadow: 2px 2px gainsboro;
@@ -15,12 +14,11 @@ const Container = styled.div`
 `
 
 const UserContainer = styled.div`
-  /* background-color: pink; */
   display: grid;
   grid-template-columns: repeat(4, auto);
-  grid-template-columns: 90px 80px 80px;
-  column-gap: 200px;
-  width: 650px;
+  grid-template-columns: 80px 80px 80px;
+  column-gap: 175px;
+  width: auto;
   border-bottom: 1px solid gray;
 `
 
@@ -44,9 +42,10 @@ const UserTitle = styled.p`
 const HeaderUl = styled.ul`
   display: grid;
   grid-template-columns: repeat(4,auto);
+  grid-template-columns: 80px 80px 80px;
   list-style: none;
   padding-inline-start: 0;
-  gap: 250px;
+  column-gap: 175px;
 `
 
 const HeaderList = styled.li`
@@ -60,7 +59,7 @@ const HeaderItems = [
 
 const HeaderDisplay = () => {
   return(
-    <>
+    <div>
       <HeaderUl>
         {HeaderItems.map((item,index) => {
           return(
@@ -72,7 +71,7 @@ const HeaderDisplay = () => {
           )
         })}
       </HeaderUl>
-    </>
+    </div>
   )
 }
 
@@ -91,14 +90,14 @@ const UserCardDisplay = () => {
 
   const fetchData = async () => {
     await fetch(
-      'http://localhost:8080/personlist'
+      `${process.env.REACT_APP_API_BASE_URL}/personlist`
     )
       .then(response => response.json())
       .then(receivedData => setUser(receivedData.personList));
   }
 
   return(
-    <>
+    <div>
       {console.log(user)}
       {user.map((user,index) => {
         return(
@@ -109,22 +108,22 @@ const UserCardDisplay = () => {
         </UserContainer>
         )
       })}
-    </>
+    </div>
   )
 }
 
 const RecentUsers = () => {
-    return(
-        <Container>
-            <UserTitle>Recent Users</UserTitle>
-                <Separator/>
-                  {HeaderDisplay()}
-                <Separator/>
-                <GridContainer>
-                  {UserCardDisplay()}
-                </GridContainer>
-        </Container>
-    )
+  return(
+    <Container>
+      <UserTitle>Recent Users</UserTitle>
+      <Separator/>
+        {HeaderDisplay()}
+      <Separator/>
+      <GridContainer>
+        {UserCardDisplay()}
+      </GridContainer>
+    </Container>
+  )
 }
 
 export default RecentUsers
