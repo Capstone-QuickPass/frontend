@@ -41,19 +41,19 @@ const UserTitle = styled.p`
 
 const HeaderUl = styled.ul`
   display: grid;
-  grid-template-columns: repeat(4,auto);
+  grid-template-columns: repeat(4, auto);
   grid-template-columns: 80px 80px 80px;
   list-style: none;
   padding-inline-start: 0;
   column-gap: 175px;
-`
+`;
 
 const HeaderList = styled.li``;
 
 const HeaderItems = ['User', 'Score', 'Time'];
 
 const HeaderDisplay = () => {
-  return(
+  return (
     <div>
       <HeaderUl>
         {HeaderItems.map((item, index) => {
@@ -65,9 +65,8 @@ const HeaderDisplay = () => {
         })}
       </HeaderUl>
     </div>
-  )
-}
-
+  );
+};
 
 const UserCardDisplay = () => {
   const [user, setUser] = useState<any[]>([]);
@@ -81,14 +80,12 @@ const UserCardDisplay = () => {
   }, 2000);
 
   const fetchData = async () => {
-    await fetch(
-      `${process.env.REACT_APP_API_BASE_URL}/personlist`
-    )
-      .then(response => response.json())
-      .then(receivedData => setUser(receivedData.personList));
-  }
+    await fetch(`${process.env.REACT_APP_API_BASE_URL}/personlist`)
+      .then((response) => response.json())
+      .then((receivedData) => setUser(receivedData.personList));
+  };
 
-  return(
+  return (
     <div>
       {console.log(user)}
       {user.map((user, index) => {
@@ -101,21 +98,19 @@ const UserCardDisplay = () => {
         );
       })}
     </div>
-  )
-}
+  );
+};
 
 const RecentUsers = () => {
-  return(
+  return (
     <Container>
       <UserTitle>Recent Users</UserTitle>
-      <Separator/>
-        {HeaderDisplay()}
-      <Separator/>
-      <GridContainer>
-        {UserCardDisplay()}
-      </GridContainer>
+      <Separator />
+      {HeaderDisplay()}
+      <Separator />
+      <GridContainer>{UserCardDisplay()}</GridContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default RecentUsers
+export default RecentUsers;

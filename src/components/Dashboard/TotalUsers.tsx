@@ -27,31 +27,24 @@ const NumberDisplay = styled.p`
 const UserCount = () => {
   const [count, setCount] = useState<any[]>([]);
 
-   useEffect( () => {
-      fetchData();
-   }, []);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-   useInterval(() => {
-      fetchData()
-   }, 2000);
+  useInterval(() => {
+    fetchData();
+  }, 2000);
 
-   const fetchData = async () => {
-     await fetch(
-       `${process.env.REACT_APP_API_BASE_URL}/personlist`
-     )
-       .then(response => response.json())
-       .then(receivedData => setCount(receivedData.personListSize));
-   }
+  const fetchData = async () => {
+    await fetch(`${process.env.REACT_APP_API_BASE_URL}/personlist`)
+      .then((response) => response.json())
+      .then((receivedData) => setCount(receivedData.personListSize));
+  };
 
-   return (
-       <div>{count}</div>
-   )
-}
-
-
+  return <div>{count}</div>;
+};
 
 const TotalUsers = () => {
-
   return (
     <TileContainer>
       <CountTitle>Total Users</CountTitle>
