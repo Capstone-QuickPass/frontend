@@ -6,11 +6,11 @@ import { Router, Sidebar, Header } from './components';
 function App() {
   return (
     <Layout>
-      <Header/>
+      <Header />
       <BottomLayout>
-        <Sidebar/>
-        <div style={{flexGrow:1}}>
-          <Router/>
+        <Sidebar />
+        <div style={{ flexGrow: 1 }}>
+          <Router />
         </div>
       </BottomLayout>
     </Layout>
@@ -24,8 +24,8 @@ const Layout = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const BottomLayout = styled.div`
   display: flex;
-`
+`;

@@ -5,7 +5,7 @@ import { Dashboard } from '../../views/Dashboard';
 const Router = () => (
   <main>
     <Switch>
-      <Route exact path='/' component={ Dashboard }/>
+      <Route exact path="/" component={Dashboard} />
     </Switch>
   </main>
 );
