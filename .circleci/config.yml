@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Run Tests
           command: npm run test
-      - run: 
+      - run:
           name: Build dashboard
           command: npm run dev
 

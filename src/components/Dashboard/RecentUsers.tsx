@@ -11,7 +11,7 @@ const Container = styled.div`
   width: 650px;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const UserContainer = styled.div`
   display: grid;
@@ -20,16 +20,16 @@ const UserContainer = styled.div`
   column-gap: 175px;
   width: auto;
   border-bottom: 1px solid gray;
-`
+`;
 
 const GridContainer = styled.div`
   overflow-y: scroll;
-`
+`;
 
 const Separator = styled.hr`
   width: 100%;
   margin: 0px;
-`
+`;
 
 const UserTitle = styled.p`
   text-align: start;
@@ -37,7 +37,7 @@ const UserTitle = styled.p`
   color: black;
   font-family: 'Courier New', Courier, monospace;
   margin: 5px;
-`
+`;
 
 const HeaderUl = styled.ul`
   display: grid;
@@ -48,27 +48,20 @@ const HeaderUl = styled.ul`
   column-gap: 175px;
 `
 
-const HeaderList = styled.li`
-`
+const HeaderList = styled.li``;
 
-const HeaderItems = [
-  "User",
-  "Score",
-  "Time"
-]
+const HeaderItems = ['User', 'Score', 'Time'];
 
 const HeaderDisplay = () => {
   return(
     <div>
       <HeaderUl>
-        {HeaderItems.map((item,index) => {
-          return(
+        {HeaderItems.map((item, index) => {
+          return (
             <>
-              <HeaderList key={index}>
-                {item}
-              </HeaderList>
-              </>
-          )
+              <HeaderList key={index}>{item}</HeaderList>
+            </>
+          );
         })}
       </HeaderUl>
     </div>
@@ -77,15 +70,14 @@ const HeaderDisplay = () => {
 
 
 const UserCardDisplay = () => {
-
   const [user, setUser] = useState<any[]>([]);
 
-  useEffect( () => {
+  useEffect(() => {
     fetchData();
   }, []);
 
   useInterval(() => {
-    fetchData() 
+    fetchData();
   }, 2000);
 
   const fetchData = async () => {
@@ -99,14 +91,14 @@ const UserCardDisplay = () => {
   return(
     <div>
       {console.log(user)}
-      {user.map((user,index) => {
-        return(
-        <UserContainer key={index}>
-          <p>{user._id}</p>
-          <p>{user.score}</p>
-          <p>{user.time}</p>
-        </UserContainer>
-        )
+      {user.map((user, index) => {
+        return (
+          <UserContainer key={index}>
+            <p>{user._id}</p>
+            <p>{user.score}</p>
+            <p>{user.time}</p>
+          </UserContainer>
+        );
       })}
     </div>
   )
