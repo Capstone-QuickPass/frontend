@@ -2,7 +2,7 @@ import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 import { Router } from './Router';
 import { Overview } from './Overview';
-import { RecentUsers, TotalUsers, UsersGraph } from './Dashboard';
+import { RecentUsers, TotalUsers, UsersGraph, NewUsersCount } from './Dashboard';
 export {
   Header,
   Sidebar,
@@ -11,4 +11,5 @@ export {
   RecentUsers,
   TotalUsers,
   UsersGraph,
+  NewUsersCount
 };

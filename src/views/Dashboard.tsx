@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { RecentUsers, TotalUsers, UsersGraph } from '../components';
+import { RecentUsers, TotalUsers, UsersGraph, NewUsersCount } from '../components';
 
 const Display = styled.div`
   padding: 10px;
@@ -17,11 +17,20 @@ const TopHalf = styled.div`
   gap: 10px;
 `;
 
+const LeftTopTile = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`
+
 const Dashboard = () => {
   return (
     <Display>
       <TopHalf>
-        <TotalUsers />
+        <LeftTopTile>
+          <TotalUsers />
+          <NewUsersCount/>
+        </LeftTopTile>
         <RecentUsers />
       </TopHalf>
       <UsersGraph />
