@@ -1,4 +1,4 @@
-import { PersonList, PersonActionTypes, GET_PERSONLIST } from './types';
+import { PersonList, PersonActionTypes, UPDATE_PERSONLIST } from './types';
 
 const initialPerson: PersonList = {
   list: [],
@@ -10,7 +10,7 @@ export function personReducer(
   action: PersonActionTypes,
 ): PersonList {
   switch (action.type) {
-    case GET_PERSONLIST: {
+    case UPDATE_PERSONLIST: {
       return {
         ...state,
         ...action.payload,

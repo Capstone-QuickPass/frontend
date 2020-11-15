@@ -20,7 +20,7 @@ function App() {
 export default App;
 
 const Layout = styled.div`
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;

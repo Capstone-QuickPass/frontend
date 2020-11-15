@@ -1,13 +1,19 @@
+export interface person {
+  _id: number;
+  score: number;
+  time: string;
+}
+
 export interface PersonList {
-  list: [];
+  list: person[];
   size: number;
 }
 
-export const GET_PERSONLIST = 'person/GET_PERSONLIST';
+export const UPDATE_PERSONLIST = 'person/UPDATE_PERSONLIST';
 
-interface FetchPersonList {
-  type: typeof GET_PERSONLIST;
+interface UpdatePersonList {
+  type: typeof UPDATE_PERSONLIST;
   payload: PersonList;
 }
 
-export type PersonActionTypes = FetchPersonList;
+export type PersonActionTypes = UpdatePersonList;

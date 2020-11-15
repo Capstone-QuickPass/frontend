@@ -1,8 +1,8 @@
-import { PersonList, PersonActionTypes, GET_PERSONLIST } from './types';
+import { PersonList, PersonActionTypes, UPDATE_PERSONLIST } from './types';
 
-export function fetchPerson(list: PersonList): PersonActionTypes {
+export function updatePersonList(list: PersonList): PersonActionTypes {
   return {
-    type: GET_PERSONLIST,
+    type: UPDATE_PERSONLIST,
     payload: list,
   } as const;
 }

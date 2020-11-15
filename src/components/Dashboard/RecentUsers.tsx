@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useInterval from '@use-it/interval';
+import store from '../../store';
 
 const Container = styled.div`
   background-color: ghostwhite;
@@ -72,22 +73,15 @@ const UserCardDisplay = () => {
   const [user, setUser] = useState<any[]>([]);
 
   useEffect(() => {
-    fetchData();
+    setUser(store.getState().person.list);
   }, []);
 
   useInterval(() => {
-    fetchData();
+    setUser(store.getState().person.list);
   }, 2000);
-
-  const fetchData = async () => {
-    await fetch(`${process.env.REACT_APP_API_BASE_URL}/personlist`)
-      .then((response) => response.json())
-      .then((receivedData) => setUser(receivedData.personList));
-  };
 
   return (
     <div>
-      {console.log(user)}
       {user.map((user, index) => {
         return (
           <UserContainer key={index}>
