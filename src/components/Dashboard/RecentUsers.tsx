@@ -59,9 +59,9 @@ const HeaderDisplay = () => {
       <HeaderUl>
         {HeaderItems.map((item, index) => {
           return (
-            <>
-              <HeaderList key={index}>{item}</HeaderList>
-            </>
+            <div key={index}>
+              <HeaderList>{item}</HeaderList>
+            </div>
           );
         })}
       </HeaderUl>
@@ -73,12 +73,14 @@ const UserCardDisplay = () => {
   const [user, setUser] = useState<any[]>([]);
 
   useEffect(() => {
-    setUser(store.getState().person.list);
+    setTimeout(() => {
+      setUser(store.getState().person.list);
+    }, 100);
   }, []);
 
   useInterval(() => {
     setUser(store.getState().person.list);
-  }, 2000);
+  }, 2100);
 
   return (
     <div>

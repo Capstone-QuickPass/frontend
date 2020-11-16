@@ -1,4 +1,3 @@
-import { create } from 'domain';
 import { combineReducers, createStore } from 'redux';
 import { personReducer } from './personList/reducers';
 

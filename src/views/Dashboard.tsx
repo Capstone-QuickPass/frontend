@@ -1,5 +1,5 @@
 import useInterval from '@use-it/interval';
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import {
@@ -35,29 +35,33 @@ const LeftTopTile = styled.div`
 const Dashboard = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    getPersonList();
-  }, []);
-
-  useInterval(() => {
-    getPersonList();
-  }, 2000);
-
-  const getPersonList = async () => {
-    const resp = await fetchData();
-    const newPersonListState: PersonList = {
-      list: resp.personList,
-      size: resp.personListSize,
-    };
-    dispatch(updatePersonList(newPersonListState));
-  };
-
   const fetchData = async () => {
     const data = await fetch(
       `${process.env.REACT_APP_API_BASE_URL}/personlist`,
     );
     return data.json();
   };
+
+  const getPersonList = useCallback(() => {
+    const fetchPersonList = async () => {
+      const resp = await fetchData();
+      const newPersonListState: PersonList = {
+        list: resp.personList,
+        size: resp.personListSize,
+      };
+      dispatch(updatePersonList(newPersonListState));
+    };
+
+    fetchPersonList();
+  }, [dispatch]);
+
+  useEffect(() => {
+    getPersonList();
+  }, [getPersonList]);
+
+  useInterval(() => {
+    getPersonList();
+  }, 2000);
 
   return (
     <Display>

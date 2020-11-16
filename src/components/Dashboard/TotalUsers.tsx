@@ -21,7 +21,7 @@ const CountTitle = styled.p`
   margin: 0;
 `;
 
-const NumberDisplay = styled.p`
+const NumberDisplay = styled.div`
   font-size: 35px;
   margin: 20px;
   color: #ffffff;
@@ -31,14 +31,16 @@ const UserCount = () => {
   const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
-    setCount(store.getState().person.size);
+    setTimeout(() => {
+      setCount(store.getState().person.size);
+    }, 100);
   }, []);
 
   useInterval(() => {
     setCount(store.getState().person.size);
-  }, 2000);
+  }, 2100);
 
-  return <div>{count}</div>;
+  return <p>{count}</p>;
 };
 
 const TotalUsers = () => {
