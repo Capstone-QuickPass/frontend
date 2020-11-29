@@ -11,7 +11,7 @@ import {
 } from 'recharts';
 
 const TileContainer = styled.div`
-  height: 375px;
+  height: 400px;
   width: 1040px;
   background-color: ghostwhite;
   box-shadow: 2px 2px gainsboro;
