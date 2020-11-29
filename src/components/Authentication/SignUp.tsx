@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {ReactElement, useState} from 'react'
 import {
     Grid,
     TextField,
@@ -12,6 +12,8 @@ import {
 import {Formik, Form, FormikProps} from 'formik'
 import * as Yup from 'yup'
 import styled from "styled-components";
+import AuthStore from './authStore';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -73,18 +75,26 @@ const formStatusProps: IFormStatusProps = {
     },
 }
 
-const SignUp: React.FunctionComponent = () => {
+interface SignUpProps {
+    isSignUpSuccess: boolean
+}
+
+const SignUp: React.FC<SignUpProps> = (props: SignUpProps) => {
     const classes = useStyles()
     const [displayFormStatus, setDisplayFormStatus] = useState(false)
     const [formStatus, setFormStatus] = useState<IFormStatus>({
         message: '',
         type: '',
-    })
+    });
+
+    const history = useHistory();
 
     const createNewUser = async (data: ISignUpForm, resetForm: Function) => {
         try {
             //CHECK HERE
             if (data) {
+                AuthStore.set(data.email, data.password);
+                console.log(AuthStore);
                 setFormStatus(formStatusProps.success)
                 resetForm({})
             }
@@ -310,6 +320,7 @@ const SignUp: React.FunctionComponent = () => {
                                         variant="contained"
                                         color="secondary"
                                         disabled={isSubmitting}
+                                        onClick = {() => history.push("/")}
                                     >
                                         Submit
                                     </Button>

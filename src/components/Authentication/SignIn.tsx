@@ -6,11 +6,12 @@ import {
     makeStyles,
     createStyles,
     Theme,
-} from '@material-ui/core'
-import {Formik, Form, FormikProps} from 'formik'
-import * as Yup from 'yup'
-import {Link} from "react-router-dom";
+} from '@material-ui/core';
+import { Formik, Form, FormikProps } from 'formik';
+import * as Yup from 'yup';
+import {Link, useHistory} from "react-router-dom";
 import styled from "styled-components";
+import AuthStore from './authStore';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -77,18 +78,20 @@ const SignIn: React.FunctionComponent = () => {
         type: '',
     })
 
+    const history = useHistory();
+
     const validateLogin = async (data: ISignInForm, resetForm: Function) => {
         try {
             // CHECK HERE
-            console.log(data);
             if (data) {
-                setFormStatus(formStatusProps.success)
-                resetForm({})
+                const storePass = AuthStore.get(data.email);
+                if (storePass && data.password === storePass) {
+                    setFormStatus(formStatusProps.success)
+                    resetForm({})
+                }
             }
         } catch (error) {
-            const response = error.response
             setFormStatus(formStatusProps.error)
-
         } finally {
             setDisplayFormStatus(true)
         }
@@ -195,6 +198,7 @@ const SignIn: React.FunctionComponent = () => {
                                             variant="contained"
                                             color="secondary"
                                             disabled={isSubmitting}
+                                            onClick={() => {history.push("/dashboard")}}
                                         >
                                             Submit
                                         </Button>
