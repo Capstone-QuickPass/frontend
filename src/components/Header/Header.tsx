@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { IconButton } from '@material-ui/core';
 import { Help, ExitToApp } from '@material-ui/icons';
+import { useHistory } from 'react-router-dom';
 
 const Menu = styled.div`
   background: #2f54eb;
@@ -19,14 +20,16 @@ const IconButtons = styled.div`
   margin-right: 2rem;
 `;
 
-const Header = () => {
+const Header: React.FC = () => {
+  const history = useHistory();
+
   return (
     <Menu>
       <IconButtons>
         <IconButton color="inherit">
           <Help fontSize="large" />
         </IconButton>
-        <IconButton color="inherit">
+        <IconButton onClick={() => history.push('/')} color="inherit">
           <ExitToApp fontSize="large" />
         </IconButton>
       </IconButtons>
