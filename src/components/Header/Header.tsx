@@ -9,7 +9,7 @@ const Menu = styled.div`
   display: flex;
   align-items: center;
   color: whitesmoke;
-  height: 87px;
+  min-height: 7.5vh;
 `;
 
 const IconButtons = styled.div`

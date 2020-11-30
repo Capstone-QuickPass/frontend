@@ -1,6 +1,6 @@
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
-import { Router } from './Router';
+import { Router } from '../Router';
 import {
   RecentUsers,
   TotalUsers,
