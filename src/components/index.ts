@@ -6,6 +6,7 @@ import {
   TotalUsers,
   UsersGraph,
   NewUsersCount,
+  DateTile,
 } from './Dashboard';
 export {
   Header,
@@ -15,4 +16,5 @@ export {
   TotalUsers,
   UsersGraph,
   NewUsersCount,
+  DateTile,
 };

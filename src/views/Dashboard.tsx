@@ -7,6 +7,7 @@ import {
   TotalUsers,
   UsersGraph,
   NewUsersCount,
+  DateTile,
 } from '../components';
 import { updatePersonList } from '../store/personList/actions';
 import { PersonList } from '../store/personList/types';
@@ -71,6 +72,7 @@ const Dashboard = () => {
           <NewUsersCount />
         </LeftTopTile>
         <RecentUsers />
+        <DateTile />
       </TopHalf>
       <UsersGraph />
     </Display>

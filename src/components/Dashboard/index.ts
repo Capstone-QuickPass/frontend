@@ -2,4 +2,5 @@ import RecentUsers from './RecentUsers';
 import TotalUsers from './TotalUsers';
 import UsersGraph from './UsersGraph';
 import NewUsersCount from './NewUsersCount';
-export { RecentUsers, TotalUsers, NewUsersCount, UsersGraph };
+import DateTile from './DateTile';
+export { RecentUsers, TotalUsers, NewUsersCount, UsersGraph, DateTile };
