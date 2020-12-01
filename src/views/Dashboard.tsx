@@ -44,7 +44,9 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   const fetchData = async () => {
-    const data = await fetch(`http://localhost:8080/personlist`);
+    const data = await fetch(
+      `${process.env.REACT_APP_API_BASE_URL}/personlist`,
+    );
     return data.json();
   };
 
