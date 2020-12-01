@@ -12,7 +12,7 @@ import {
 
 const TileContainer = styled.div`
   height: 400px;
-  width: 61rem;
+  width: 60rem;
   background-color: ghostwhite;
   box-shadow: 2px 2px gainsboro;
   padding: 15px;

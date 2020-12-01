@@ -8,6 +8,7 @@ import {
   UsersGraph,
   NewUsersCount,
   DateTile,
+  MaskPercTile,
 } from '../components';
 import { updatePersonList } from '../store/personList/actions';
 import { PersonList } from '../store/personList/types';
@@ -33,7 +34,7 @@ const LeftSide = styled.div`
   flex-direction: column;
 `;
 
-const LeftTopTile = styled.div`
+const ColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -74,11 +75,14 @@ const Dashboard = () => {
     <Display>
       <LeftSide>
         <TopHalf>
-          <LeftTopTile>
+          <ColumnContainer>
             <TotalUsers />
             <NewUsersCount />
-          </LeftTopTile>
-          <DateTile />
+          </ColumnContainer>
+          <ColumnContainer>
+            <DateTile />
+          </ColumnContainer>
+          <MaskPercTile />
         </TopHalf>
         <UsersGraph />
       </LeftSide>

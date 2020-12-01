@@ -7,6 +7,7 @@ import {
   UsersGraph,
   NewUsersCount,
   DateTile,
+  MaskPercTile,
 } from './Dashboard';
 export {
   Header,
@@ -17,4 +18,5 @@ export {
   UsersGraph,
   NewUsersCount,
   DateTile,
+  MaskPercTile,
 };
