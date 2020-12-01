@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const TileContainer = styled.div`
   height: 130px;
-  width: 270px;
+  width: 240px;
   background-color: #296157;
   box-shadow: 2px 2px gainsboro;
   padding: 15px;
@@ -12,12 +12,12 @@ export const TileContainer = styled.div`
 
 export const DateText = styled.div`
   color: white;
-  font-size: 30px;
+  font-size: 27px;
   margin: 10px;
 `;
 
 export const TimeText = styled.div`
   color: white;
-  font-size: 30px;
+  font-size: 27px;
   margin: 20px 10px;
 `;
