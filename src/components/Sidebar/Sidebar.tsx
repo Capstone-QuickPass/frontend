@@ -8,7 +8,7 @@ const Menu = styled.div`
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  width: 12.5rem;
+  min-width: 12.5rem;
   color: whitesmoke;
 `;
 
