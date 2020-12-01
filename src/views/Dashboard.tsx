@@ -17,14 +17,20 @@ const Display = styled.div`
   display: flex;
   justify-content: start;
   align-items: flex-start;
-  flex-direction: column;
   max-height: 90vh;
+  overflow: hidden;
   gap: 10px;
 `;
 
 const TopHalf = styled.div`
   display: inline-flex;
   gap: 10px;
+  padding-bottom: 10px;
+`;
+
+const LeftSide = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const LeftTopTile = styled.div`
@@ -66,15 +72,17 @@ const Dashboard = () => {
 
   return (
     <Display>
-      <TopHalf>
-        <LeftTopTile>
-          <TotalUsers />
-          <NewUsersCount />
-        </LeftTopTile>
-        <RecentUsers />
-        <DateTile />
-      </TopHalf>
-      <UsersGraph />
+      <LeftSide>
+        <TopHalf>
+          <LeftTopTile>
+            <TotalUsers />
+            <NewUsersCount />
+          </LeftTopTile>
+          <DateTile />
+        </TopHalf>
+        <UsersGraph />
+      </LeftSide>
+      <RecentUsers />
     </Display>
   );
 };

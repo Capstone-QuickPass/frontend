@@ -8,8 +8,8 @@ const Container = styled.div`
   box-shadow: 2px 2px gainsboro;
   border-radius: 10px;
   padding: 15px;
-  height: 300px;
-  width: 760px;
+  height: 85vh;
+  width: 40rem;
   display: flex;
   flex-direction: column;
 `;

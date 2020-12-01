@@ -28,4 +28,5 @@ const Layout = styled.div`
 
 const BottomLayout = styled.div`
   display: flex;
+  min-height: 92.5vh;
 `;

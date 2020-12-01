@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Dashboard } from '../../views/Dashboard';
-import {SignIn, SignUp} from '../Authentication';
-import Welcome from '../Welcome';
+import { Dashboard, Livestream, Settings, Users } from '../views';
+import { SignIn, SignUp } from '../components/Authentication';
+import Welcome from '../components/Welcome';
 
 const Router = () => (
   <main>
@@ -13,6 +13,9 @@ const Router = () => (
       <Route exact path="/login" component={SignIn} />
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/dashboard" component={Dashboard} />
+      <Route exact path="/livestream" component={Livestream} />
+      <Route exact path="/settings" component={Settings} />
+      <Route exact path="/users" component={Users} />
     </Switch>
   </main>
 );
