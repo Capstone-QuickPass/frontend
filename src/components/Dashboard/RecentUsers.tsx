@@ -9,15 +9,15 @@ const Container = styled.div`
   border-radius: 10px;
   padding: 15px;
   height: 85vh;
-  width: 40rem;
+  width: 50rem;
   display: flex;
   flex-direction: column;
 `;
 
 const UserContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-template-columns: 80px 80px 80px;
+  grid-template-columns: repeat(5, auto);
+  grid-template-columns: 70px 40px 70px 70px;
   column-gap: 175px;
   width: auto;
   border-bottom: 1px solid gray;
@@ -43,7 +43,7 @@ const UserTitle = styled.p`
 const HeaderUl = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, auto);
-  grid-template-columns: 80px 80px 80px;
+  grid-template-columns: 70px 40px 70px 70px;
   list-style: none;
   padding-inline-start: 0;
   column-gap: 175px;
@@ -51,7 +51,7 @@ const HeaderUl = styled.ul`
 
 const HeaderList = styled.li``;
 
-const HeaderItems = ['User', 'Score', 'Time'];
+const HeaderItems = ['User', 'Mask Status', 'Precision Score', 'Time'];
 
 const HeaderDisplay = () => {
   return (
@@ -88,6 +88,7 @@ const UserCardDisplay = () => {
         return (
           <UserContainer key={index}>
             <p>{user._id}</p>
+            <p>{user.mask_status}</p>
             <p>{user.score}</p>
             <p>{user.time}</p>
           </UserContainer>
