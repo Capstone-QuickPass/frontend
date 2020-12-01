@@ -5,7 +5,7 @@ export const TileContainer = styled.div`
   flex-direction: column;
   height: 300px;
   width: 240px;
-  background-color: #9370db;
+  background-color: #a0a0a0;
   box-shadow: 2px 2px gainsboro;
   padding: 15px;
   border-radius: 10px;

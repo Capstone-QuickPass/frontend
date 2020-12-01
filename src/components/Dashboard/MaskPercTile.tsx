@@ -11,12 +11,12 @@ import {
 import { PieChart, Pie } from 'recharts';
 
 const data = [
-  { name: 'Group A', value: 318, fill: '#7CFC00' },
+  { name: 'Group A', value: 318, fill: '#004d00' },
   { name: 'Group B', value: 34, fill: '#990000' },
 ];
 
 const theme = {
-  main: '#7CFC00',
+  main: '#004d00',
 };
 
 const MaskPercTile = () => {
