@@ -40,7 +40,6 @@ const MaskCount = () => {
     }
     setCount(count);
   }, 2100);
-  console.log(maskcount);
 
   return [maskcount, store.getState().person.size - maskcount];
 };
