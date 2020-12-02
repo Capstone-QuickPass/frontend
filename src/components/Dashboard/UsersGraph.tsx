@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from 'recharts';
+import { RootState } from '../../store';
 
 const TileContainer = styled.div`
   height: 400px;
@@ -30,48 +31,48 @@ const GraphTitle = styled.p`
 const data = [
   {
     name: 'Sept. 25, 2020',
-    Users: 105,
-    'At Risk Cases': 2,
+    Users: 85,
+    'At Risk Cases': 3,
   },
   {
     name: 'Sept. 26, 2020',
-    Users: 35,
-    'At Risk Cases': 0,
+    Users: 63,
+    'At Risk Cases': 2,
   },
   {
     name: 'Sept. 27, 2020',
-    Users: 57,
-    'At Risk Cases': 1,
+    Users: 36,
+    'At Risk Cases': 4,
   },
   {
     name: 'Sept. 28, 2020',
-    Users: 69,
+    Users: 90,
     'At Risk Cases': 10,
   },
   {
     name: 'Sept. 29, 2020',
-    Users: 12,
+    Users: 54,
     'At Risk Cases': 0,
   },
   {
     name: 'Sept. 30, 2020',
-    Users: 48,
-    'At Risk Cases': 0,
+    Users: 252,
+    'At Risk Cases': 5,
   },
   {
     name: 'Oct. 1, 2020',
-    Users: 86,
-    'At Risk Cases': 0,
+    Users: 235,
+    'At Risk Cases': 4,
   },
   {
     name: 'Oct. 2, 2020',
-    Users: 68,
-    'At Risk Cases': 0,
+    Users: 124,
+    'At Risk Cases': 17,
   },
   {
     name: 'Oct. 3, 2020',
     Users: 145,
-    'At Risk Cases': 10,
+    'At Risk Cases': 11,
   },
   {
     name: 'Oct. 4, 2020',
@@ -100,14 +101,22 @@ const data = [
   },
 ];
 
-const UsersGraph = () => {
+interface UsersGraphPlot {
+  data: any;
+}
+
+const mapStateToProps = (state: RootState) => {
+  data: state.person.list;
+};
+
+const UsersGraph = (props: UsersGraphPlot) => {
   return (
     <TileContainer>
       <GraphTitle>Numbers of Users in the Past 14 Days</GraphTitle>
       <LineChart
         width={950}
         height={325}
-        data={data}
+        data={props.data}
         margin={{
           top: 5,
           right: 30,
@@ -116,7 +125,7 @@ const UsersGraph = () => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="time" />
         <YAxis />
         <Tooltip />
         <Legend />
@@ -137,4 +146,4 @@ const UsersGraph = () => {
   );
 };
 
-export default UsersGraph;
+export default connect(mapStateToProps)(UsersGraph);
