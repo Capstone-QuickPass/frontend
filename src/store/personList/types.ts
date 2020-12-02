@@ -1,7 +1,9 @@
 export interface person {
   _id: number;
-  score: number;
+  photo: Int16Array;
   time: string;
+  score: number;
+  mask_status: string;
 }
 
 export interface PersonList {

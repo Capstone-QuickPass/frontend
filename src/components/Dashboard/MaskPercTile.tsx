@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   TileContainer,
   UserText,
@@ -8,18 +8,48 @@ import {
   LegendContainer,
   PercentageContainer,
 } from './MaskElements';
+import useInterval from '@use-it/interval';
+import store from '../../store';
 import { PieChart, Pie } from 'recharts';
-
-const data = [
-  { name: 'Group A', value: 318, fill: '#004d00' },
-  { name: 'Group B', value: 34, fill: '#990000' },
-];
 
 const theme = {
   main: '#004d00',
 };
 
+const MaskCount = () => {
+  const [maskcount, setCount] = useState<number>(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      var count = 0;
+      for (var i = 0; i < store.getState().person.size; i++) {
+        if (store.getState().person.list[i].mask_status == 'Mask') {
+          count += 1;
+        }
+      }
+      setCount(count);
+    }, 100);
+  }, []);
+
+  useInterval(() => {
+    var count = 0;
+    for (var i = 0; i < store.getState().person.size; i++) {
+      if (store.getState().person.list[i].mask_status == 'Mask') {
+        count += 1;
+      }
+    }
+    setCount(count);
+  }, 2100);
+
+  return [maskcount, store.getState().person.size - maskcount];
+};
+
 const MaskPercTile = () => {
+  var data = [
+    { name: 'Masks', value: MaskCount()[0], fill: '#004d00' },
+    { name: 'Non-Mask', value: MaskCount()[1], fill: '#990000' },
+  ];
+
   return (
     <TileContainer>
       <UserText>Percentage of People Wearing Masks</UserText>
