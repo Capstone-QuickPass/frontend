@@ -125,7 +125,7 @@ const UsersGraph = (props: UsersGraphPlot) => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="time" />
+        <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
         <Legend />
