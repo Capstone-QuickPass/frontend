@@ -29,7 +29,7 @@ export const LegendContainer = styled.div`
   flex-direction: column;
 `;
 
-export const PercentageContainer = styled.div`
+export const PercentageContainer = styled.h4`
   font-size: 20px;
   width: 100px;
   margin: 5px 0px 0 20px;
