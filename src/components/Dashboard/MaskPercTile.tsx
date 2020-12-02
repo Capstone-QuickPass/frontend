@@ -53,20 +53,6 @@ const MaskPercTile = () => {
   return (
     <TileContainer>
       <UserText>Percentage of People Wearing Masks</UserText>
-      <SubContainer>
-        <LegendContainer>
-          <Legend theme={theme}>Mask On &nbsp;</Legend>
-          <Legend theme={{ main: '#990000' }} style={{ margin: '2px 0px' }}>
-            {' '}
-            Mask Off
-          </Legend>
-        </LegendContainer>
-        <PercentageContainer>
-          {100 -
-            Math.round((data[1].value / data[0].value) * 100) +
-            '% of masks on'}
-        </PercentageContainer>
-      </SubContainer>
       <GraphContainer>
         <PieChart width={400} height={400}>
           <Pie
@@ -75,12 +61,25 @@ const MaskPercTile = () => {
             endAngle={0}
             data={data}
             cx={200}
-            cy={160}
+            cy={150}
             outerRadius={80}
             label
           />
         </PieChart>
       </GraphContainer>
+      <SubContainer>
+        <LegendContainer>
+          <Legend theme={theme}>Mask On &nbsp;</Legend>
+          <Legend theme={{ main: '#990000' }}> Mask Off</Legend>
+        </LegendContainer>
+        <PercentageContainer>
+          {100 -
+            Math.round(
+              (data[1].value / (data[0].value + data[1].value)) * 100,
+            ) +
+            '% of masks on'}
+        </PercentageContainer>
+      </SubContainer>
     </TileContainer>
   );
 };

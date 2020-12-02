@@ -19,7 +19,7 @@ export const UserText = styled.h2`
 `;
 
 export const SubContainer = styled.div`
-  margin: 10px 0;
+  margin: 90px 0;
   display: flex;
   flex-direction: row;
 `;
@@ -31,16 +31,22 @@ export const LegendContainer = styled.div`
 
 export const PercentageContainer = styled.div`
   font-size: 20px;
-  margin: 5px;
+  width: 100px;
+  margin: 5px 0px 0 20px;
   color: white;
 `;
 
 export const Legend = styled.div`
+  margin: 2px 0;
   color: ${(props) => props.theme.main};
+  border-style: solid;
+  border-color: ${(props) => props.theme.main};
 `;
 
 export const GraphContainer = styled.div`
   position: relative;
+  height: 100px;
+  width: 100px;
   right: 80px;
   bottom: 70px;
 `;
