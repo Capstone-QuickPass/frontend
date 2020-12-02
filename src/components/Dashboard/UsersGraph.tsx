@@ -11,8 +11,8 @@ import {
 } from 'recharts';
 
 const TileContainer = styled.div`
-  height: 400px;
-  width: 60rem;
+  height: 22.5rem;
+  width: 45rem;
   background-color: ghostwhite;
   box-shadow: 2px 2px gainsboro;
   padding: 15px;
@@ -105,8 +105,8 @@ const UsersGraph = () => {
     <TileContainer>
       <GraphTitle>Numbers of Users in the Past 14 Days</GraphTitle>
       <LineChart
-        width={950}
-        height={325}
+        width={675}
+        height={300}
         data={data}
         margin={{
           top: 5,

@@ -23,7 +23,7 @@ const MaskCount = () => {
     setTimeout(() => {
       var count = 0;
       for (var i = 0; i < store.getState().person.size; i++) {
-        if (store.getState().person.list[i].mask_status == 'Mask') {
+        if (store.getState().person.list[i].mask_status === 'Mask') {
           count += 1;
         }
       }
@@ -34,7 +34,7 @@ const MaskCount = () => {
   useInterval(() => {
     var count = 0;
     for (var i = 0; i < store.getState().person.size; i++) {
-      if (store.getState().person.list[i].mask_status == 'Mask') {
+      if (store.getState().person.list[i].mask_status === 'Mask') {
         count += 1;
       }
     }
