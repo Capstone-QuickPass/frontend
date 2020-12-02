@@ -116,7 +116,7 @@ const UsersGraph = (props: UsersGraphPlot) => {
       <LineChart
         width={950}
         height={325}
-        data={props.data}
+        data={data}
         margin={{
           top: 5,
           right: 30,
@@ -146,4 +146,4 @@ const UsersGraph = (props: UsersGraphPlot) => {
   );
 };
 
-export default connect(mapStateToProps)(UsersGraph);
+export default UsersGraph;
