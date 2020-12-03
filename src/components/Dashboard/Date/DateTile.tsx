@@ -1,5 +1,5 @@
 import React from 'react';
-import { TileContainer, DateText, TimeText } from './DataTileElements';
+import { TileContainer, DateText, TimeText } from './style';
 
 class DateTile extends React.Component<{}, any> {
   constructor(props: any) {

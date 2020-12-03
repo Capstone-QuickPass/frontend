@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useInterval from '@use-it/interval';
-import store from '../../store';
+import store from '../../../store';
 
 const Container = styled.div`
   background-color: ghostwhite;
   box-shadow: 2px 2px gainsboro;
   border-radius: 10px;
   padding: 15px;
-  height: 85vh;
-  width: 50rem;
+  height: 84vh;
+  width: 41rem;
   display: flex;
   flex-direction: column;
 `;
@@ -17,8 +17,7 @@ const Container = styled.div`
 const UserContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(5, auto);
-  grid-template-columns: 70px 40px 70px 70px;
-  column-gap: 175px;
+  column-gap: 4.5rem;
   width: auto;
   border-bottom: 1px solid gray;
 `;
@@ -42,8 +41,7 @@ const UserTitle = styled.p`
 
 const HeaderUl = styled.ul`
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-template-columns: 70px 40px 70px 70px;
+  grid-template-columns: 20px 20px 20px 20px;
   list-style: none;
   padding-inline-start: 0;
   column-gap: 175px;

@@ -6,7 +6,7 @@ import {
   RecentUsers,
   TotalUsers,
   UsersGraph,
-  NewUsersCount,
+  HalfHourCount,
   DateTile,
   MaskPercTile,
 } from '../components';
@@ -36,7 +36,6 @@ const LeftSide = styled.div`
 
 const ColumnContainer = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 10px;
 `;
 
@@ -75,13 +74,14 @@ const Dashboard = () => {
     <Display>
       <LeftSide>
         <TopHalf>
-          <ColumnContainer>
-            <TotalUsers />
-            <NewUsersCount />
-          </ColumnContainer>
-          <ColumnContainer>
-            <DateTile />
-          </ColumnContainer>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <ColumnContainer>
+              <TotalUsers />
+              <DateTile />
+            </ColumnContainer>
+            <br />
+            <HalfHourCount />
+          </div>
           <MaskPercTile />
         </TopHalf>
         <UsersGraph />

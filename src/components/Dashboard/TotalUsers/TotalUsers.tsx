@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useInterval from '@use-it/interval';
-import store from '../../store';
+import store from '../../../store';
 
 const TileContainer = styled.div`
   height: 130px;
-  width: 240px;
+  width: 10rem;
   background-color: #c73749;
   box-shadow: 2px 2px gainsboro;
   padding: 15px;
