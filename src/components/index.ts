@@ -5,7 +5,7 @@ import {
   RecentUsers,
   TotalUsers,
   UsersGraph,
-  NewUsersCount,
+  HalfHourCount,
   DateTile,
   MaskPercTile,
 } from './Dashboard';
@@ -16,7 +16,7 @@ export {
   RecentUsers,
   TotalUsers,
   UsersGraph,
-  NewUsersCount,
+  HalfHourCount,
   DateTile,
   MaskPercTile,
 };

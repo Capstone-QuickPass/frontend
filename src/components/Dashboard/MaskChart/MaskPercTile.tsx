@@ -7,9 +7,9 @@ import {
   Legend,
   LegendContainer,
   PercentageContainer,
-} from './MaskElements';
+} from './style';
 import useInterval from '@use-it/interval';
-import store from '../../store';
+import store from '../../../store';
 import { PieChart, Pie } from 'recharts';
 
 const theme = {
@@ -46,8 +46,8 @@ const MaskCount = () => {
 
 const MaskPercTile = () => {
   var data = [
-    { name: 'Masks', value: MaskCount()[0], fill: '#004d00' },
-    { name: 'Non-Mask', value: MaskCount()[1], fill: '#990000' },
+    { name: 'Masks', value: MaskCount()[0], fill: '#33aa33' },
+    { name: 'Non-Mask', value: MaskCount()[1], fill: '#dd4343' },
   ];
 
   return (
@@ -70,7 +70,7 @@ const MaskPercTile = () => {
       <SubContainer>
         <LegendContainer>
           <Legend theme={theme}>Mask On &nbsp;</Legend>
-          <Legend theme={{ main: '#990000' }}> Mask Off</Legend>
+          <Legend theme={{ main: '#dd4343' }}> Mask Off</Legend>
         </LegendContainer>
         <PercentageContainer>
           {100 -

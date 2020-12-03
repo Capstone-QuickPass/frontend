@@ -5,7 +5,8 @@ export const TileContainer = styled.div`
   flex-direction: column;
   height: 300px;
   width: 20rem;
-  background-color: #a0a0a0;
+  align-items: center;
+  background-color: #d8d8d8;
   box-shadow: 2px 2px gainsboro;
   padding: 15px;
   border-radius: 10px;
@@ -15,7 +16,7 @@ export const TileContainer = styled.div`
 export const UserText = styled.h2`
   margin: 5px;
   font-size: 20px;
-  color: white;
+  color: black;
 `;
 
 export const SubContainer = styled.div`
@@ -33,7 +34,7 @@ export const PercentageContainer = styled.h4`
   font-size: 20px;
   width: 100px;
   margin: 5px 0px 0 20px;
-  color: white;
+  color: black;
 `;
 
 export const Legend = styled.div`
@@ -47,6 +48,6 @@ export const GraphContainer = styled.div`
   position: relative;
   height: 100px;
   width: 100px;
-  right: 80px;
+  right: 160px;
   bottom: 70px;
 `;

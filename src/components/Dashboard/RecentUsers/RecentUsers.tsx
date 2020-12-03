@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useInterval from '@use-it/interval';
-import store from '../../store';
+import store from '../../../store';
 
 const Container = styled.div`
   background-color: ghostwhite;
