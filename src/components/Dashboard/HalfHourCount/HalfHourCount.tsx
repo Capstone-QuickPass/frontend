@@ -34,7 +34,7 @@ const HalfHourCount = () => {
   useInterval(() => {
     let count = countPast30();
     setPast30Count(count);
-  }, 60000);
+  }, 2100);
 
   return (
     <TileContainer>
