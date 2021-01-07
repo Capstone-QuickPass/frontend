@@ -1,4 +1,3 @@
-import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 import { Router } from '../Router';
 import {
@@ -10,7 +9,6 @@ import {
   MaskPercTile,
 } from './Dashboard';
 export {
-  Header,
   Sidebar,
   Router,
   RecentUsers,
