@@ -20,7 +20,7 @@ const navMenuLinksProps: Partial<INavStyles> = {
   },
   linkText: {
     color: COLORS.WHITE,
-    fontSize: '0.875rem',
+    fontSize: '0.95rem',
     fontFamily: FONTS.SEGOE_UI_REGULAR,
   },
 };
