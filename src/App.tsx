@@ -12,7 +12,9 @@ import { Dashboard, Livestream, Settings, Users } from './views';
 
 initializeIcons();
 
-const App = (props: { location: any }) => {
+const App: React.FC<{ location: any }> = (props: {
+  location: any;
+}): ReactElement => {
   return (
     <Layout>
       <Header />
