@@ -11,3 +11,10 @@ export const BottomLayout = styled.div`
   display: flex;
   min-height: 92.5vh;
 `;
+
+export const MainWrapper = styled.main`
+  display: flex;
+  flex-direction: row;
+  min-width: 100%;
+  justify-content: center;
+`;
