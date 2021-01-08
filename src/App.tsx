@@ -39,7 +39,6 @@ const App: React.FC<{ location: any }> = (props: {
 };
 
 const isSidebarVisible = (path: string): boolean => {
-  console.log(path);
   return path !== '/' && path !== '/login' && path !== '/signup';
 };
 
