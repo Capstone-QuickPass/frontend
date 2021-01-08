@@ -5,9 +5,10 @@ export const Layout = styled.div`
   width: 100vw;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 `;
 
 export const BottomLayout = styled.div`
   display: flex;
-  min-height: 92.5vh;
+  min-height: 100%;
 `;
