@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement } from 'react';
 
 import { Sidebar } from './components';
 import { Header } from './components/Common/Header';
