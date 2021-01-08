@@ -1,5 +1,4 @@
 import { Sidebar } from './Sidebar';
-import { Router } from '../Router';
 import {
   RecentUsers,
   TotalUsers,
@@ -8,9 +7,9 @@ import {
   DateTile,
   MaskPercTile,
 } from './Dashboard';
+
 export {
   Sidebar,
-  Router,
   RecentUsers,
   TotalUsers,
   UsersGraph,
