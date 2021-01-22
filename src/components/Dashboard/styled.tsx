@@ -5,18 +5,23 @@ export const Display = styled.div`
   display: flex;
   justify-content: start;
   align-items: flex-start;
-  flex-direction: column;
   max-height: 90vh;
+  overflow: hidden;
   gap: 10px;
 `;
 
 export const TopHalf = styled.div`
   display: inline-flex;
   gap: 10px;
+  padding-bottom: 10px;
+`;
+
+export const LeftSide = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ColumnContainer = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 10px;
 `;

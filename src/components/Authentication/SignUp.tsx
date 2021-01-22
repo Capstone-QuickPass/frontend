@@ -1,20 +1,26 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import {
   Grid,
-  TextField,
   Button,
   makeStyles,
   createStyles,
   Theme,
-  Select,
   MenuItem,
   FormHelperText,
 } from '@material-ui/core';
 import { Formik, Form, FormikProps } from 'formik';
 import * as Yup from 'yup';
-import styled from 'styled-components';
-import AuthStore from './authStore';
-import { useHistory } from 'react-router-dom';
+
+import AuthStore from '../../auth/authStore';
+
+import {
+  Container,
+  SignUpField,
+  SignUpSelect,
+  SubmitButtonGrid,
+} from './styled';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,26 +29,6 @@ const useStyles = makeStyles((theme: Theme) =>
     errorMessage: { color: 'red' },
   }),
 );
-
-const Container = styled.div`
-  max-width: 450px;
-  display: block;
-  margin: 0 auto;
-`;
-
-const SignUpField = styled(TextField)`
-  width: 100%;
-  margin: 1% 0;
-`;
-
-const SignUpSelect = styled(Select)`
-  width: 100%;
-  margin: 2% 0;
-`;
-
-const SubmitButtonGrid = styled(Grid)`
-  padding-top: 2%;
-`;
 
 interface ISignUpForm {
   fullName: string;

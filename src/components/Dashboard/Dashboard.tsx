@@ -9,35 +9,10 @@ import {
   HalfHourCount,
   DateTile,
   MaskPercTile,
-} from '../components';
-import { updatePersonList } from '../store/personList/actions';
-import { PersonList } from '../store/personList/types';
-
-const Display = styled.div`
-  padding: 10px;
-  display: flex;
-  justify-content: start;
-  align-items: flex-start;
-  max-height: 90vh;
-  overflow: hidden;
-  gap: 10px;
-`;
-
-const TopHalf = styled.div`
-  display: inline-flex;
-  gap: 10px;
-  padding-bottom: 10px;
-`;
-
-const LeftSide = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const ColumnContainer = styled.div`
-  display: flex;
-  gap: 10px;
-`;
+} from '..';
+import { updatePersonList } from '../../store/personList/actions';
+import { PersonList } from '../../store/personList/types';
+import { ColumnContainer, Display, LeftSide, TopHalf } from './styled';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
