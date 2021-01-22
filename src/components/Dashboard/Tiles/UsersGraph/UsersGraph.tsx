@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+
+import store from '../../../../store';
+
 import {
   LineChart,
   Line,
@@ -9,11 +12,11 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import store from '../../../store';
 import _ from 'lodash';
 import useInterval from '@use-it/interval';
 import moment from 'moment';
-import { TileContainer, GraphTitle } from './style';
+
+import { TileContainer, GraphTitle } from './styled';
 
 interface dataPoint {
   hour: string;

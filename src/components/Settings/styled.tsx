@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const Display = styled.div`
+export const Display = styled.div`
   padding: 10px;
   display: flex;
   justify-content: start;
@@ -10,9 +9,3 @@ const Display = styled.div`
   max-height: 90vh;
   gap: 10px;
 `;
-
-const Users = () => {
-  return <Display>Users</Display>;
-};
-
-export { Users };

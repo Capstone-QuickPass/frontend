@@ -1,4 +1,10 @@
 import React, { useEffect, useState } from 'react';
+
+import store from '../../../../store';
+
+import useInterval from '@use-it/interval';
+import { PieChart, Pie } from 'recharts';
+
 import {
   TileContainer,
   UserText,
@@ -7,10 +13,7 @@ import {
   Legend,
   LegendContainer,
   PercentageContainer,
-} from './style';
-import useInterval from '@use-it/interval';
-import store from '../../../store';
-import { PieChart, Pie } from 'recharts';
+} from './styled';
 
 const theme = {
   main: '#004d00',

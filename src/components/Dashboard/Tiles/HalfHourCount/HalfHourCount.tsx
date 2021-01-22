@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import store from '../../../store';
+
+import store from '../../../../store';
+
 import _ from 'lodash';
 import useInterval from '@use-it/interval';
 import moment from 'moment';
+
 import {
   TileContainer,
   RecentCountTitle,
   TimeRefresh,
   CountIncrease,
-} from './style';
+} from './styled';
 
 const countPast30 = () => {
   let listOfUsers = store.getState().person.list;

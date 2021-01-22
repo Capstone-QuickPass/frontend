@@ -1,17 +1,18 @@
-import useInterval from '@use-it/interval';
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
-import {
-  RecentUsers,
-  TotalUsers,
-  UsersGraph,
-  HalfHourCount,
-  DateTile,
-  MaskPercTile,
-} from '..';
+
+import DateTile from './Tiles/Date';
+import HalfHourCount from './Tiles/HalfHourCount';
+import MaskPercTile from './Tiles/MaskChart';
+import RecentUsers from './Tiles/RecentUsers';
+import TotalUsers from './Tiles/TotalUsers/TotalUsers';
+import UsersGraph from './Tiles/UsersGraph';
+
 import { updatePersonList } from '../../store/personList/actions';
 import { PersonList } from '../../store/personList/types';
+
+import useInterval from '@use-it/interval';
+
 import { ColumnContainer, Display, LeftSide, TopHalf } from './styled';
 
 const Dashboard = () => {
@@ -66,4 +67,4 @@ const Dashboard = () => {
   );
 };
 
-export { Dashboard };
+export default Dashboard;
