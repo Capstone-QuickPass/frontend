@@ -1,14 +1,18 @@
 import React, { ReactElement } from 'react';
-
-import { Sidebar } from './components';
-import { Header } from './components/Common/Header';
-
-import { BottomLayout, Layout } from './styled';
-import { initializeIcons } from '@fluentui/react';
 import { Route, Switch, withRouter } from 'react-router-dom';
+
+import Sidebar from './components/Sidebar';
+import Header from './components/Common/Header';
 import Welcome from './components/Welcome';
 import { SignIn, SignUp } from './components/Authentication';
-import { Dashboard, Livestream, Settings, Users } from './views';
+import Dashboard from './components/Dashboard';
+import Livestream from './components/Livestream';
+import Settings from './components/Settings';
+import Users from './components/Users';
+
+import { initializeIcons } from '@fluentui/react';
+
+import { BottomLayout, Layout } from './styled';
 
 initializeIcons();
 
