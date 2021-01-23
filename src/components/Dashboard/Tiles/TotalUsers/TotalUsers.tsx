@@ -1,31 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import useInterval from '@use-it/interval';
-import store from '../../../../store';
+import React, { ReactElement } from 'react';
+import { connect } from 'react-redux';
+import { RootState } from '../../../../store';
+
 import { CountTitle, NumberDisplay, TileContainer } from './styled';
 
-const UserCount = () => {
-  const [count, setCount] = useState<number>(0);
+interface TotalUsersProps {
+  count: number;
+}
 
-  useEffect(() => {
-    setTimeout(() => {
-      setCount(store.getState().person.size);
-    }, 100);
-  }, []);
-
-  useInterval(() => {
-    setCount(store.getState().person.size);
-  }, 2100);
-
-  return <p>{count}</p>;
+const mapStateToProps = (state: RootState) => {
+  return {
+    count: state.person.size,
+  };
 };
 
-const TotalUsers = () => {
+const TotalUsers: React.FC<TotalUsersProps> = (
+  props: TotalUsersProps,
+): ReactElement => {
   return (
     <TileContainer>
       <CountTitle>Total Users</CountTitle>
-      <NumberDisplay>{UserCount()}</NumberDisplay>
+      <NumberDisplay>{props.count}</NumberDisplay>
     </TileContainer>
   );
 };
 
-export default TotalUsers;
+export default connect(mapStateToProps)(TotalUsers);
