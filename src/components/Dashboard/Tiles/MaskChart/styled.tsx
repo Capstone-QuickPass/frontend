@@ -1,17 +1,31 @@
 import styled from 'styled-components';
 
-export const TileContainer = styled.div`
+import { Card } from '@uifabric/react-cards';
+import { FONTS } from '../../../../globalStyles';
+
+export const TileContainer = styled(Card)`
   display: flex;
   flex-direction: column;
-  height: 300px;
-  width: 20rem;
-  align-items: center;
+  height: 100%;
+  min-width: 20rem;
   background-color: #d8d8d8;
-  box-shadow: 2px 2px gainsboro;
   padding: 15px;
-  border-radius: 10px;
   text-align: left;
+  align-items: center;
 `;
+
+// export const TileContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   height: 300px;
+//   width: 20rem;
+//   align-items: center;
+//   background-color: #d8d8d8;
+//   box-shadow: 2px 2px gainsboro;
+//   padding: 15px;
+//   border-radius: 10px;
+//   text-align: left;
+// `;
 
 export const UserText = styled.h2`
   margin: 5px;

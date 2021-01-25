@@ -4,8 +4,8 @@ import { Card } from '@uifabric/react-cards';
 import { FONTS } from '../../../../globalStyles';
 
 export const TileContainer = styled(Card)`
-  min-height: 130px;
-  width: 100%;
+  height: 100%;
+  min-width: 100%;
   background-color: #6948eb;
   padding: 15px;
   text-align: left;

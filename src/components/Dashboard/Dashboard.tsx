@@ -50,12 +50,13 @@ const Dashboard = () => {
     <Display>
       <LeftSide>
         <TopHalf>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
+          >
             <ColumnContainer>
               <TotalUsers />
               <DateTile />
             </ColumnContainer>
-            <br />
             <HalfHourCount />
           </div>
           <MaskPercTile />
