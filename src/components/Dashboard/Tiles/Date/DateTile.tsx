@@ -19,12 +19,10 @@ class DateTile extends React.Component<{}, any> {
 
   render() {
     return (
-      <>
-        <TileContainer>
-          <DateText>Date: {new Date().toLocaleDateString()}</DateText>
-          <TimeText>Time: {this.state.currTime}</TimeText>
-        </TileContainer>
-      </>
+      <TileContainer>
+        <DateText>Date: {new Date().toLocaleDateString()}</DateText>
+        <TimeText>Time: {this.state.currTime}</TimeText>
+      </TileContainer>
     );
   }
 }

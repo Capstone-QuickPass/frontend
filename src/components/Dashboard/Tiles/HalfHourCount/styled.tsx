@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
-export const TileContainer = styled.div`
-  height: 130px;
-  padding-top: 10px;
-  width: 22.5rem;
+import { Card } from '@uifabric/react-cards';
+
+export const TileContainer = styled(Card)`
+  min-height: 130px;
+  width: 10rem;
   background-color: #6948eb;
-  box-shadow: 2px 2px gainsboro;
   padding: 15px;
-  border-radius: 10px;
   text-align: left;
 `;
 
