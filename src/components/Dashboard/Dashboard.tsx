@@ -1,6 +1,8 @@
 import React, { useEffect, useCallback, ReactElement } from 'react';
-import { connect, useDispatch } from 'react-redux';
+
+import { connect } from 'react-redux';
 import { RootState } from '../../store';
+import { setPage } from '../../store/page/actions';
 
 import DateTile from './Tiles/Date';
 import HalfHourCount from './Tiles/HalfHourCount';
@@ -19,6 +21,8 @@ import { ColumnContainer, Display, LeftSide, TopHalf } from './styled';
 interface DashboardProps {
   personList: person[];
   personListSize: number;
+  setPage: (currentPageTitle: string, currentPage: string) => void;
+  updatePersonList: (newPersonListState: PersonList) => void;
 }
 
 const mapStateToProps = (state: RootState) => {
@@ -28,10 +32,23 @@ const mapStateToProps = (state: RootState) => {
   };
 };
 
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    setPage: (currentPageTitle: string, currentPage: string) => {
+      dispatch(setPage(currentPageTitle, currentPage));
+    },
+    updatePersonList: (newPersonListState: PersonList) => {
+      dispatch(updatePersonList(newPersonListState));
+    },
+  };
+};
+
 const Dashboard: React.FC<DashboardProps> = (
   props: DashboardProps,
 ): ReactElement => {
-  const dispatch = useDispatch();
+  useEffect(() => {
+    props.setPage('Dashboard', '/dashboard');
+  }, []);
 
   const fetchData = async () => {
     const data = await fetch(
@@ -47,11 +64,11 @@ const Dashboard: React.FC<DashboardProps> = (
         list: resp.personList,
         size: resp.personListSize,
       };
-      dispatch(updatePersonList(newPersonListState));
+      props.updatePersonList(newPersonListState);
     };
 
     fetchPersonList();
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     getPersonList();
@@ -83,4 +100,4 @@ const Dashboard: React.FC<DashboardProps> = (
   );
 };
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
