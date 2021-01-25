@@ -91,8 +91,8 @@ const MaskPercTile: React.FC<MaskPercTileProps> = (
       </GraphContainer>
       <SubContainer>
         <LegendContainer>
-          <Legend theme={theme}>Mask On &nbsp;</Legend>
-          <Legend theme={{ main: '#dd4343' }}> Mask Off</Legend>
+          <Legend theme={theme}>Mask On</Legend>
+          <Legend theme={{ main: '#dd4343' }}>Mask Off</Legend>
         </LegendContainer>
         <PercentageContainer>
           {100 -

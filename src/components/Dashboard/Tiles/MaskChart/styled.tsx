@@ -14,22 +14,10 @@ export const TileContainer = styled(Card)`
   align-items: center;
 `;
 
-// export const TileContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   height: 300px;
-//   width: 20rem;
-//   align-items: center;
-//   background-color: #d8d8d8;
-//   box-shadow: 2px 2px gainsboro;
-//   padding: 15px;
-//   border-radius: 10px;
-//   text-align: left;
-// `;
-
 export const UserText = styled.h2`
   margin: 5px;
   font-size: 20px;
+  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
   color: black;
 `;
 
@@ -49,13 +37,16 @@ export const PercentageContainer = styled.h4`
   width: 100px;
   margin: 5px 0px 0 20px;
   color: black;
+  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
 `;
 
 export const Legend = styled.div`
   margin: 2px 0;
+  padding: 0px 5px;
   color: ${(props) => props.theme.main};
   border-style: solid;
   border-color: ${(props) => props.theme.main};
+  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
 `;
 
 export const GraphContainer = styled.div`
