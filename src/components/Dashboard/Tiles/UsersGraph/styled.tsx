@@ -1,18 +1,20 @@
 import styled from 'styled-components';
 
-export const TileContainer = styled.div`
-  height: 22.5rem;
-  width: 45rem;
+import { Card } from '@uifabric/react-cards';
+import { FONTS } from '../../../../globalStyles';
+
+export const TileContainer = styled(Card)`
+  min-height: 25rem;
+  min-width: 100%;
   background-color: ghostwhite;
-  box-shadow: 2px 2px gainsboro;
   padding: 15px;
-  border-radius: 10px;
   text-align: left;
 `;
 
 export const GraphTitle = styled.p`
   font-size: 25px;
   color: black;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
+  font-weight: 450;
   margin-top: 0;
 `;

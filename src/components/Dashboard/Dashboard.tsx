@@ -5,7 +5,7 @@ import DateTile from './Tiles/Date';
 import HalfHourCount from './Tiles/HalfHourCount';
 import MaskPercTile from './Tiles/MaskChart';
 import RecentUsers from './Tiles/RecentUsers';
-import TotalUsers from './Tiles/TotalUsers/TotalUsers';
+import TotalUsers from './Tiles/TotalUsers';
 import UsersGraph from './Tiles/UsersGraph';
 
 import { updatePersonList } from '../../store/personList/actions';
