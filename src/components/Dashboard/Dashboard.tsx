@@ -1,5 +1,6 @@
-import React, { useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useCallback, ReactElement } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { RootState } from '../../store';
 
 import DateTile from './Tiles/Date';
 import HalfHourCount from './Tiles/HalfHourCount';
@@ -9,13 +10,27 @@ import TotalUsers from './Tiles/TotalUsers';
 import UsersGraph from './Tiles/UsersGraph';
 
 import { updatePersonList } from '../../store/personList/actions';
-import { PersonList } from '../../store/personList/types';
+import { person, PersonList } from '../../store/personList/types';
 
 import useInterval from '@use-it/interval';
 
 import { ColumnContainer, Display, LeftSide, TopHalf } from './styled';
 
-const Dashboard = () => {
+interface DashboardProps {
+  personList: person[];
+  personListSize: number;
+}
+
+const mapStateToProps = (state: RootState) => {
+  return {
+    size: state.person.size,
+    list: state.person.list,
+  };
+};
+
+const Dashboard: React.FC<DashboardProps> = (
+  props: DashboardProps,
+): ReactElement => {
   const dispatch = useDispatch();
 
   const fetchData = async () => {
@@ -63,9 +78,9 @@ const Dashboard = () => {
         </TopHalf>
         <UsersGraph />
       </LeftSide>
-      <RecentUsers />
+      <RecentUsers list={props.personList} />
     </Display>
   );
 };
 
-export default Dashboard;
+export default connect(mapStateToProps)(Dashboard);
