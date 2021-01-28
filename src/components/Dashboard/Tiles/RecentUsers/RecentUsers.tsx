@@ -1,7 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 
-import store from '../../../../store';
-
 import useInterval from '@use-it/interval';
 
 import {

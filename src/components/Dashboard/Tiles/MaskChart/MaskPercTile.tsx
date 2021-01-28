@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 
-import store, { RootState } from '../../../../store';
+import { RootState } from '../../../../store';
 
 import useInterval from '@use-it/interval';
 import { PieChart, Pie } from 'recharts';
