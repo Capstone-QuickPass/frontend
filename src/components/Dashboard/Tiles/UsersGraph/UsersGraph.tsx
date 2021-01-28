@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 
-import store from '../../../../store';
+import { connect } from 'react-redux';
+import { RootState } from '../../../../store';
+import { person } from '../../../../store/personList/types';
 
 import {
   LineChart,
@@ -18,141 +20,27 @@ import moment from 'moment';
 
 import { TileContainer, GraphTitle } from './styled';
 
-interface dataPoint {
-  hour: string;
-  Users: number;
+import { DUMMY_DATA } from './dummyData';
+import DataPoint from './DataPoint';
+import { FONTS } from '../../../../globalStyles';
+
+interface UsersGraphProps {
+  list: person[];
 }
 
-const getGraphData = () => {
-  const initialData = [
-    {
-      hour: '0',
-      Users: 0,
-    },
-    {
-      hour: '1',
-      Users: 0,
-    },
-    {
-      hour: '2',
-      Users: 0,
-    },
-    {
-      hour: '3',
-      Users: 0,
-    },
-    {
-      hour: '4',
-      Users: 0,
-    },
-    {
-      hour: '5',
-      Users: 0,
-    },
-    {
-      hour: '6',
-      Users: 0,
-    },
-    {
-      hour: '7',
-      Users: 0,
-    },
-    {
-      hour: '8',
-      Users: 0,
-    },
-    {
-      hour: '9',
-      Users: 0,
-    },
-    {
-      hour: '10',
-      Users: 0,
-    },
-    {
-      hour: '11',
-      Users: 0,
-    },
-    {
-      hour: '12',
-      Users: 0,
-    },
-    {
-      hour: '13',
-      Users: 0,
-    },
-    {
-      hour: '14',
-      Users: 0,
-    },
-    {
-      hour: '15',
-      Users: 0,
-    },
-    {
-      hour: '16',
-      Users: 0,
-    },
-    {
-      hour: '17',
-      Users: 0,
-    },
-    {
-      hour: '18',
-      Users: 0,
-    },
-    {
-      hour: '19',
-      Users: 0,
-    },
-    {
-      hour: '20',
-      Users: 0,
-    },
-    {
-      hour: '21',
-      Users: 0,
-    },
-    {
-      hour: '22',
-      Users: 0,
-    },
-    {
-      hour: '23',
-      Users: 0,
-    },
-  ];
-  const listOfUsers = store.getState().person.list;
-  const entryHours = _.chain(listOfUsers)
-    .sortBy('time')
-    .map((user) => {
-      return moment(user.time, 'HH:mm:ss').hour();
-    })
-    .value();
-
-  let partition = _.countBy(entryHours, (hour) => {
-    return hour;
-  });
-
-  let updatedData = initialData;
-
-  _.forEach(partition, (value, key) => {
-    const newDataPoint = {
-      hour: key,
-      Users: value,
-    };
-
-    const index = _.findIndex(initialData, { hour: key });
-    updatedData.splice(index, 1, newDataPoint);
-  });
-  return updatedData;
+const mapStateToProps = (state: RootState) => {
+  return {
+    list: state.person.list,
+  };
 };
 
-const UsersGraph = () => {
-  const [graphData, setGraphData] = useState<dataPoint[]>();
+const UsersGraph: React.FC<UsersGraphProps> = (
+  props: UsersGraphProps,
+): ReactElement => {
+  const [graphData, setGraphData] = useState<DataPoint[]>();
 
   const updateData = () => {
-    const newData = getGraphData();
+    const newData = getGraphData(props.list);
     setGraphData(newData);
   };
 
@@ -180,8 +68,8 @@ const UsersGraph = () => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="hour" />
-          <YAxis />
+          <XAxis dataKey="hour" tick={{ fontFamily: FONTS.SEGOE_UI_REGULAR }} />
+          <YAxis tick={{ fontFamily: FONTS.SEGOE_UI_REGULAR }} />
           <Tooltip />
           <Legend />
           <Line
@@ -196,4 +84,32 @@ const UsersGraph = () => {
   );
 };
 
-export default UsersGraph;
+const getGraphData = (list: person[]) => {
+  const initialData = DUMMY_DATA;
+  const listOfUsers = list;
+  const entryHours = _.chain(listOfUsers)
+    .sortBy('time')
+    .map((user) => {
+      return moment(user.time, 'HH:mm:ss').hour();
+    })
+    .value();
+
+  let partition = _.countBy(entryHours, (hour) => {
+    return hour;
+  });
+
+  let updatedData = initialData;
+
+  _.forEach(partition, (value, key) => {
+    const newDataPoint = {
+      hour: key,
+      Users: value,
+    };
+
+    const index = _.findIndex(initialData, { hour: key });
+    updatedData.splice(index, 1, newDataPoint);
+  });
+  return updatedData;
+};
+
+export default connect(mapStateToProps)(UsersGraph);

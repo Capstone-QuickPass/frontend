@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 
-import store from '../../../../store';
+import { RootState } from '../../../../store';
 
 import useInterval from '@use-it/interval';
 import { PieChart, Pie } from 'recharts';
@@ -14,19 +14,40 @@ import {
   LegendContainer,
   PercentageContainer,
 } from './styled';
+import { connect } from 'react-redux';
+import { person } from '../../../../store/personList/types';
 
 const theme = {
   main: '#004d00',
 };
 
-const MaskCount = () => {
+interface MaskPercTileProps {
+  size: number;
+  list: person[];
+}
+
+const mapStateToProps = (state: RootState) => {
+  return {
+    size: state.person.size,
+    list: state.person.list,
+  };
+};
+
+const MaskPercTile: React.FC<MaskPercTileProps> = (
+  props: MaskPercTileProps,
+): ReactElement => {
   const [maskcount, setCount] = useState<number>(0);
+
+  var data = [
+    { name: 'Masks', value: 0, fill: '#33aa33' },
+    { name: 'Non-Mask', value: 0, fill: '#dd4343' },
+  ];
 
   useEffect(() => {
     setTimeout(() => {
       var count = 0;
-      for (var i = 0; i < store.getState().person.size; i++) {
-        if (store.getState().person.list[i].mask_status === 'Mask') {
+      for (var i = 0; i < props.size; i++) {
+        if (props.list[i].mask_status === 'Mask') {
           count += 1;
         }
       }
@@ -36,22 +57,20 @@ const MaskCount = () => {
 
   useInterval(() => {
     var count = 0;
-    for (var i = 0; i < store.getState().person.size; i++) {
-      if (store.getState().person.list[i].mask_status === 'Mask') {
+    for (var i = 0; i < props.size; i++) {
+      if (props.list[i].mask_status === 'Mask') {
         count += 1;
       }
     }
     setCount(count);
   }, 2100);
 
-  return [maskcount, store.getState().person.size - maskcount];
-};
-
-const MaskPercTile = () => {
-  var data = [
-    { name: 'Masks', value: MaskCount()[0], fill: '#33aa33' },
-    { name: 'Non-Mask', value: MaskCount()[1], fill: '#dd4343' },
-  ];
+  useEffect(() => {
+    data = [
+      { name: 'Masks', value: maskcount, fill: '#33aa33' },
+      { name: 'Non-Mask', value: maskcount - props.size, fill: '#dd4343' },
+    ];
+  }, [maskcount]);
 
   return (
     <TileContainer>
@@ -72,8 +91,8 @@ const MaskPercTile = () => {
       </GraphContainer>
       <SubContainer>
         <LegendContainer>
-          <Legend theme={theme}>Mask On &nbsp;</Legend>
-          <Legend theme={{ main: '#dd4343' }}> Mask Off</Legend>
+          <Legend theme={theme}>Mask On</Legend>
+          <Legend theme={{ main: '#dd4343' }}>Mask Off</Legend>
         </LegendContainer>
         <PercentageContainer>
           {100 -
@@ -87,4 +106,4 @@ const MaskPercTile = () => {
   );
 };
 
-export default MaskPercTile;
+export default connect(mapStateToProps)(MaskPercTile);

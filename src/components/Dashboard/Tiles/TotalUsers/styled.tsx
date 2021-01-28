@@ -1,25 +1,26 @@
 import styled from 'styled-components';
+import { FONTS } from '../../../../globalStyles';
 
-export const TileContainer = styled.div`
-  height: 130px;
+import { Card } from '@uifabric/react-cards';
+
+export const TileContainer = styled(Card)`
+  min-height: 130px;
   width: 10rem;
   background-color: #c73749;
-  box-shadow: 2px 2px gainsboro;
   padding: 15px;
-  border-radius: 10px;
   text-align: left;
 `;
 
 export const CountTitle = styled.p`
   font-size: 25px;
-  color: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  margin: 0;
+  color: white;
+  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
+  margin: 10px;
 `;
 
 export const NumberDisplay = styled.div`
   font-size: 35px;
+  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
   margin: 20px;
-  color: #ffffff;
+  color: white;
 `;

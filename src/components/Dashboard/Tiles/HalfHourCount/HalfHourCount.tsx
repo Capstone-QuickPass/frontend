@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 
-import store from '../../../../store';
+import { connect } from 'react-redux';
+import { RootState } from '../../../../store';
+import { person } from '../../../../store/personList/types';
 
 import _ from 'lodash';
 import useInterval from '@use-it/interval';
@@ -13,29 +15,30 @@ import {
   CountIncrease,
 } from './styled';
 
-const countPast30 = () => {
-  let listOfUsers = store.getState().person.list;
-  let filteredUsers = _.filter(listOfUsers, (user) => {
-    return (
-      user.time >= moment().subtract(30, 'minutes').format('HH:mm:ss') &&
-      user.time <= moment().format('HH:mm:ss')
-    );
-  });
-  return filteredUsers.length;
+interface HalfHourCountProps {
+  personList: person[];
+}
+
+const mapStateToProps = (state: RootState) => {
+  return {
+    personList: state.person.list,
+  };
 };
 
-const HalfHourCount = () => {
+const HalfHourCount: React.FC<HalfHourCountProps> = (
+  props: HalfHourCountProps,
+): ReactElement => {
   const [past30Count, setPast30Count] = useState<number>(0);
 
   useEffect(() => {
     setTimeout(() => {
-      let count = countPast30();
+      let count = countPast30(props.personList);
       setPast30Count(count);
     }, 100);
   }, []);
 
   useInterval(() => {
-    let count = countPast30();
+    let count = countPast30(props.personList);
     setPast30Count(count);
   }, 2100);
 
@@ -48,4 +51,14 @@ const HalfHourCount = () => {
   );
 };
 
-export default HalfHourCount;
+const countPast30 = (listOfUsers: person[]) => {
+  let filteredUsers = _.filter(listOfUsers, (user) => {
+    return (
+      user.time >= moment().subtract(30, 'minutes').format('HH:mm:ss') &&
+      user.time <= moment().format('HH:mm:ss')
+    );
+  });
+  return filteredUsers.length;
+};
+
+export default connect(mapStateToProps)(HalfHourCount);
