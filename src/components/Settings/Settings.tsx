@@ -3,8 +3,22 @@ import { Card, CardContent, TextField, Button } from '@material-ui/core';
 import { SettingSection, Display } from './styled';
 import { Formik, Form } from 'formik';
 import axios from 'axios';
+import { RootState } from '../../store';
+import { connect } from 'react-redux';
 
-const Settings = () => {
+interface CurrentCapacity {
+  maxCapacity: number;
+  currentPopulation: number;
+}
+
+const mapStateToProps = (state: RootState) => {
+  return {
+    maxCapacity: state.facility.capacity,
+    currentPopulation: state.facility.currentPopulation,
+  };
+};
+
+const Settings = (props: CurrentCapacity) => {
   return (
     <SettingSection>
       <Display>
@@ -13,7 +27,7 @@ const Settings = () => {
           <CardContent>
             <h2>Facility Information</h2>
             <Formik
-              initialValues={{ capacity: 22 }}
+              initialValues={{ capacity: props.maxCapacity }}
               onSubmit={async (data) => {
                 await axios.patch(
                   `${process.env.REACT_APP_API_BASE_URL}/facility/by/602ea8d423a00b4812b77ee6`,
@@ -47,4 +61,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default connect(mapStateToProps)(Settings);
