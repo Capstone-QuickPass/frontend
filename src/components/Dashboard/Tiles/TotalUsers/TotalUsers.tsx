@@ -16,8 +16,8 @@ interface TotalUsersProps {
 
 const mapStateToProps = (state: RootState) => {
   return {
-    maxCapacity: state.facility.size,
-    currentCapacity: state.facility.cap,
+    maxCapacity: state.facility.maxCap,
+    currentCapacity: state.facility.currCap,
   };
 };
 

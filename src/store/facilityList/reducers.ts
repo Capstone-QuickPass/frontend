@@ -5,8 +5,8 @@ import {
 } from './types';
 
 const initialPerson: FacilityList = {
-  cap: 0,
-  size: 0,
+  maxCap: 0,
+  currCap: 0,
 };
 
 export function facilityReducer(

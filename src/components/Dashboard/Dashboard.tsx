@@ -88,10 +88,9 @@ const Dashboard: React.FC<DashboardProps> = (
     const fetchFacilityList = async () => {
       const resp = await fetchData2();
       const newFacilityListState: FacilityList = {
-        cap: resp.currentCapacity,
-        size: resp.capacity,
+        currCap: resp.currentCapacity,
+        maxCap: resp.capacity,
       };
-      console.log(newFacilityListState);
       props.updateFacilityList(newFacilityListState);
     };
 

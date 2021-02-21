@@ -4,8 +4,8 @@ export interface facility {
 }
 
 export interface FacilityList {
-  cap: number;
-  size: number;
+  currCap: number;
+  maxCap: number;
 }
 
 export const UPDATE_FACILITYLIST = 'facility/UPDATE_FACILITYLIST';
