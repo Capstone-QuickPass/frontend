@@ -10,8 +10,8 @@ import {
 } from './styled';
 
 interface CurrentUserCapacityProp {
-  maxCapacity: undefined;
-  currentPopulation: undefined;
+  maxCapacity: number;
+  currentPopulation: number;
 }
 
 const mapStateToProps = (state: RootState) => {

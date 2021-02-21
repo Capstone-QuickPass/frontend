@@ -5,8 +5,8 @@ import {
 } from './types';
 
 const initialFacility: FacilityList = {
-  capacity: undefined,
-  currentPopulation: undefined,
+  capacity: 0,
+  currentPopulation: 0,
 };
 
 export function facilityReducer(

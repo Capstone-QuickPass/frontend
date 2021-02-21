@@ -1,6 +1,6 @@
 export interface FacilityList {
-  capacity: undefined;
-  currentPopulation: undefined;
+  capacity: number;
+  currentPopulation: number;
 }
 
 export const UPDATE_FACILITYLIST = 'facility/UPDATE_FACILITYLIST';
