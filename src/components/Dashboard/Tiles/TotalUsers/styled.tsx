@@ -11,6 +11,13 @@ export const TileContainer = styled(Card)`
   text-align: left;
 `;
 
+export const MaxCapacity = styled.p`
+  font-size: 25px;
+  color: white;
+  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
+  margin: 10px;
+`;
+
 export const CountTitle = styled.p`
   font-size: 25px;
   color: white;
@@ -21,6 +28,6 @@ export const CountTitle = styled.p`
 export const NumberDisplay = styled.div`
   font-size: 35px;
   font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
-  margin: 20px;
+  margin: 0 10px 10px;
   color: white;
 `;

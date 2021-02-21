@@ -2,25 +2,34 @@ import React, { ReactElement } from 'react';
 import { connect } from 'react-redux';
 import { RootState } from '../../../../store';
 
-import { CountTitle, NumberDisplay, TileContainer } from './styled';
+import {
+  CountTitle,
+  MaxCapacity,
+  NumberDisplay,
+  TileContainer,
+} from './styled';
 
-interface TotalUsersProps {
-  count: number;
+interface CurrentUserCapacityProp {
+  maxCapacity: number;
+  currentPopulation: number;
 }
 
 const mapStateToProps = (state: RootState) => {
   return {
-    count: state.person.size,
+    maxCapacity: state.facility.capacity,
+    currentPopulation: state.facility.currentPopulation,
   };
 };
 
-const TotalUsers: React.FC<TotalUsersProps> = (
-  props: TotalUsersProps,
+const TotalUsers: React.FC<CurrentUserCapacityProp> = (
+  props: CurrentUserCapacityProp,
 ): ReactElement => {
   return (
     <TileContainer>
-      <CountTitle>Total Users</CountTitle>
-      <NumberDisplay>{props.count}</NumberDisplay>
+      <MaxCapacity>Max Capacity</MaxCapacity>
+      <NumberDisplay>{props.maxCapacity}</NumberDisplay>
+      <CountTitle>Current Population</CountTitle>
+      <NumberDisplay>{props.currentPopulation}</NumberDisplay>
     </TileContainer>
   );
 };
