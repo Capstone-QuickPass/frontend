@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { RootState } from '../../../../store';
 
@@ -33,9 +33,7 @@ const mapStateToProps = (state: RootState) => {
   };
 };
 
-const MaskPercTile: React.FC<MaskPercTileProps> = (
-  props: MaskPercTileProps,
-): ReactElement => {
+const MaskPercTile = (props: MaskPercTileProps) => {
   const [maskcount, setCount] = useState<number>(0);
 
   var data = [

@@ -10,5 +10,5 @@ export const Layout = styled.div`
 
 export const BottomLayout = styled.div`
   display: flex;
-  min-height: 100%;
+  min-height: 93.1vh;
 `;

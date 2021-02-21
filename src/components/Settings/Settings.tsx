@@ -1,33 +1,67 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Card, CardContent, TextField, Button } from '@material-ui/core';
-import { SettingSection, Display } from './styled';
-import { Formik, Form } from 'formik';
+import { SettingSection, Display, Form } from './styled';
+import { Formik } from 'formik';
 import axios from 'axios';
 import { RootState } from '../../store';
 import { connect } from 'react-redux';
+import { FacilityList } from '../../store/facilityList/types';
+import { updateFacilityList } from '../../store/facilityList/actions';
 
-interface CurrentCapacity {
+interface SettingsProps {
   maxCapacity: number;
-  currentPopulation: number;
+  updateFacilityList: (newFacilityListState: FacilityList) => void;
 }
 
 const mapStateToProps = (state: RootState) => {
   return {
     maxCapacity: state.facility.capacity,
-    currentPopulation: state.facility.currentPopulation,
   };
 };
 
-const Settings = (props: CurrentCapacity) => {
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    updateFacilityList: (newFacilityListState: FacilityList) => {
+      dispatch(updateFacilityList(newFacilityListState));
+    },
+  };
+};
+
+const Settings = (props: SettingsProps) => {
+  const fetchFacilityData = async () => {
+    const items = await axios.get(
+      `${process.env.REACT_APP_API_BASE_URL}/facility/by/602ea8d423a00b4812b77ee6`,
+    );
+    return items.data;
+  };
+
+  const getFacility = useCallback(() => {
+    const fetchFacilityList = async () => {
+      const resp = await fetchFacilityData();
+      const newFacilityListState: FacilityList = {
+        currentPopulation: resp.currentCapacity,
+        capacity: resp.capacity,
+      };
+      props.updateFacilityList(newFacilityListState);
+    };
+
+    fetchFacilityList();
+  }, [props]);
+
+  useEffect(() => {
+    getFacility();
+  }, [getFacility]);
+
   return (
     <SettingSection>
       <Display>
         <h1>Settings</h1>
         <Card>
           <CardContent>
-            <h2>Facility Information</h2>
+            <h2>Facility</h2>
             <Formik
               initialValues={{ capacity: props.maxCapacity }}
+              enableReinitialize={true}
               onSubmit={async (data) => {
                 await axios.patch(
                   `${process.env.REACT_APP_API_BASE_URL}/facility/by/602ea8d423a00b4812b77ee6`,
@@ -48,6 +82,7 @@ const Settings = (props: CurrentCapacity) => {
                     value={props.values.capacity}
                     name="capacity"
                   />
+                  <br />
                   <Button type="submit" variant="contained" color="primary">
                     Update facility
                   </Button>
@@ -61,4 +96,4 @@ const Settings = (props: CurrentCapacity) => {
   );
 };
 
-export default connect(mapStateToProps)(Settings);
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);

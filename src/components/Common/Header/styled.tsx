@@ -10,7 +10,7 @@ export const Banner = styled.header`
   flex-direction: row;
   justify-content: space-between;
   max-width: 100vw;
-  max-height: 50px;
+  height: 5vh;
   align-items: center;
   padding: 8px 40px;
   z-index: 2;

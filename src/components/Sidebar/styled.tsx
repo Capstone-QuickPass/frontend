@@ -9,7 +9,7 @@ export const OuterSideBarWrapper = styled.nav`
   flex-direction: column;
   justify-content: space-between;
   min-width: 240px;
-  min-height: 100%;
+  min-height: 92vh;
   z-index: 2;
   -webkit-box-shadow: 3px 0px 3px 0px ${COLORS.GREY_BOX_SHADOW};
   -moz-box-shadow: 3px 0px 3px 0px ${COLORS.GREY_BOX_SHADOW};

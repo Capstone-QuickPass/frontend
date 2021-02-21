@@ -5,7 +5,7 @@ import { FONTS } from '../../../../globalStyles';
 export const Container = styled(Card)`
   display: flex;
   flex-direction: column;
-  height: 84vh;
+  height: 95vh;
   min-width: 41rem;
   background-color: ghostwhite;
   padding: 15px;

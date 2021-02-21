@@ -11,3 +11,8 @@ export const SettingSection = styled.div`
 export const Display = styled.div`
   width: 50%;
 `;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
