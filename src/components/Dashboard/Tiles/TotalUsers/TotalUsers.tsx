@@ -28,7 +28,7 @@ const TotalUsers: React.FC<CurrentUserCapacityProp> = (
     <TileContainer>
       <MaxCapacity>Max Capacity</MaxCapacity>
       <NumberDisplay>{props.maxCapacity}</NumberDisplay>
-      <CountTitle>Total Users</CountTitle>
+      <CountTitle>Current Population</CountTitle>
       <NumberDisplay>{props.currentPopulation}</NumberDisplay>
     </TileContainer>
   );
