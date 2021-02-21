@@ -15,7 +15,7 @@ import { updatePersonList } from '../../store/personList/actions';
 import { person, PersonList } from '../../store/personList/types';
 
 import { updateFacilityList } from '../../store/facilityList/actions';
-import { facility, FacilityList } from '../../store/facilityList/types';
+import { FacilityList } from '../../store/facilityList/types';
 
 import useInterval from '@use-it/interval';
 
@@ -88,8 +88,8 @@ const Dashboard: React.FC<DashboardProps> = (
     const fetchFacilityList = async () => {
       const resp = await fetchData2();
       const newFacilityListState: FacilityList = {
-        currCap: resp.currentCapacity,
-        maxCap: resp.capacity,
+        currentPopulation: resp.currentCapacity,
+        capacity: resp.capacity,
       };
       props.updateFacilityList(newFacilityListState);
     };

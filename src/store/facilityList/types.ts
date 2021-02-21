@@ -1,11 +1,6 @@
-export interface facility {
-  capacity: number;
-  currentCapacity: number;
-}
-
 export interface FacilityList {
-  currCap: number;
-  maxCap: number;
+  capacity: undefined;
+  currentPopulation: undefined;
 }
 
 export const UPDATE_FACILITYLIST = 'facility/UPDATE_FACILITYLIST';

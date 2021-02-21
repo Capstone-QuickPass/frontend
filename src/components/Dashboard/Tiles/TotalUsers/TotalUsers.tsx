@@ -9,27 +9,27 @@ import {
   TileContainer,
 } from './styled';
 
-interface TotalUsersProps {
-  maxCapacity: number;
-  currentCapacity: number;
+interface CurrentUserCapacityProp {
+  maxCapacity: undefined;
+  currentPopulation: undefined;
 }
 
 const mapStateToProps = (state: RootState) => {
   return {
-    maxCapacity: state.facility.maxCap,
-    currentCapacity: state.facility.currCap,
+    maxCapacity: state.facility.capacity,
+    currentPopulation: state.facility.currentPopulation,
   };
 };
 
-const TotalUsers: React.FC<TotalUsersProps> = (
-  props: TotalUsersProps,
+const TotalUsers: React.FC<CurrentUserCapacityProp> = (
+  props: CurrentUserCapacityProp,
 ): ReactElement => {
   return (
     <TileContainer>
       <MaxCapacity>Max Capacity</MaxCapacity>
       <NumberDisplay>{props.maxCapacity}</NumberDisplay>
       <CountTitle>Total Users</CountTitle>
-      <NumberDisplay>{props.currentCapacity}</NumberDisplay>
+      <NumberDisplay>{props.currentPopulation}</NumberDisplay>
     </TileContainer>
   );
 };

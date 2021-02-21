@@ -4,13 +4,13 @@ import {
   UPDATE_FACILITYLIST,
 } from './types';
 
-const initialPerson: FacilityList = {
-  maxCap: 0,
-  currCap: 0,
+const initialFacility: FacilityList = {
+  capacity: undefined,
+  currentPopulation: undefined,
 };
 
 export function facilityReducer(
-  state = initialPerson,
+  state = initialFacility,
   action: FacilityActionTypes,
 ): FacilityList {
   switch (action.type) {

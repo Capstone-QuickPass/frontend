@@ -8,5 +8,5 @@ export function updateFacilityList(list: FacilityList): FacilityActionTypes {
   return {
     type: UPDATE_FACILITYLIST,
     payload: list,
-  } as const;
+  };
 }
