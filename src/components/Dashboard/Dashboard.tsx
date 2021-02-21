@@ -14,6 +14,9 @@ import UsersGraph from './Tiles/UsersGraph';
 import { updatePersonList } from '../../store/personList/actions';
 import { person, PersonList } from '../../store/personList/types';
 
+import { updateFacilityList } from '../../store/facilityList/actions';
+import { FacilityList } from '../../store/facilityList/types';
+
 import useInterval from '@use-it/interval';
 
 import { ColumnContainer, Display, LeftSide, TopHalf } from './styled';
@@ -23,6 +26,7 @@ interface DashboardProps {
   personListSize: number;
   setPage: (currentPageTitle: string, currentPage: string) => void;
   updatePersonList: (newPersonListState: PersonList) => void;
+  updateFacilityList: (newFacilityListState: FacilityList) => void;
 }
 
 const mapStateToProps = (state: RootState) => {
@@ -39,6 +43,9 @@ const mapDispatchToProps = (dispatch: any) => {
     },
     updatePersonList: (newPersonListState: PersonList) => {
       dispatch(updatePersonList(newPersonListState));
+    },
+    updateFacilityList: (newFacilityListState: FacilityList) => {
+      dispatch(updateFacilityList(newFacilityListState));
     },
   };
 };
@@ -57,6 +64,13 @@ const Dashboard: React.FC<DashboardProps> = (
     return data.json();
   };
 
+  const fetchData2 = async () => {
+    const items = await fetch(
+      `${process.env.REACT_APP_API_BASE_URL}/facility/by/602ea8d423a00b4812b77ee6`,
+    );
+    return items.json();
+  };
+
   const getPersonList = useCallback(() => {
     const fetchPersonList = async () => {
       const resp = await fetchData();
@@ -70,12 +84,27 @@ const Dashboard: React.FC<DashboardProps> = (
     fetchPersonList();
   }, []);
 
+  const getFacilityList = useCallback(() => {
+    const fetchFacilityList = async () => {
+      const resp = await fetchData2();
+      const newFacilityListState: FacilityList = {
+        currentPopulation: resp.currentCapacity,
+        capacity: resp.capacity,
+      };
+      props.updateFacilityList(newFacilityListState);
+    };
+
+    fetchFacilityList();
+  }, []);
+
   useEffect(() => {
     getPersonList();
-  }, [getPersonList]);
+    getFacilityList();
+  }, [getPersonList, getFacilityList]);
 
   useInterval(() => {
     getPersonList();
+    getFacilityList();
   }, 2000);
 
   return (
