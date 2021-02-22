@@ -1,7 +1,7 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import useInterval from '@use-it/interval';
-
+import { RootState } from '../../../../store';
 import {
   Container,
   GridContainer,
@@ -13,12 +13,20 @@ import {
 } from './styled';
 import { person } from '../../../../store/personList/types';
 import { FONTS } from '../../../../globalStyles';
+import { connect } from 'react-redux';
 
 const HeaderItems = ['User', 'Mask Status', 'Precision Score', 'Time'];
 
 interface RecentUsersProps {
   list: person[];
 }
+
+const mapStateToProps = (state: RootState) => {
+  return {
+    size: state.person.size,
+    list: state.person.list,
+  };
+};
 
 const RecentUsers = (props: RecentUsersProps) => {
   const [user, setUser] = useState<person[]>([]);
@@ -79,4 +87,4 @@ const RecentUsers = (props: RecentUsersProps) => {
   );
 };
 
-export default RecentUsers;
+export default connect(mapStateToProps)(RecentUsers);
