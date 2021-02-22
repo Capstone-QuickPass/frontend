@@ -20,9 +20,7 @@ interface RecentUsersProps {
   list: person[];
 }
 
-const RecentUsers: React.FC<RecentUsersProps> = (
-  props: RecentUsersProps,
-): ReactElement => {
+const RecentUsers = (props: RecentUsersProps) => {
   const [user, setUser] = useState<person[]>([]);
 
   useEffect(() => {

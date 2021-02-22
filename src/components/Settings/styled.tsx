@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
-export const Display = styled.div`
-  padding: 10px;
+export const SettingSection = styled.div`
   display: flex;
-  justify-content: start;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   max-height: 90vh;
-  gap: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+`;
+
+export const Display = styled.div`
+  width: 50%;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
 `;

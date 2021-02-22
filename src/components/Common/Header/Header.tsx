@@ -23,9 +23,7 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps): ReactElement => {
   return (
     <Banner>
       <MobileBanner>
-        <Styledh1>
-          {props.headerTitle ? props.headerTitle : 'QuickPass Web Portal'}
-        </Styledh1>
+        <Styledh1>QuickPass</Styledh1>
       </MobileBanner>
       <MobileBanner>
         <TooltipHost

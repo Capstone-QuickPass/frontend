@@ -8,7 +8,7 @@ import DateTile from './Tiles/Date';
 import HalfHourCount from './Tiles/HalfHourCount';
 import MaskPercTile from './Tiles/MaskChart';
 import RecentUsers from './Tiles/RecentUsers';
-import TotalUsers from './Tiles/TotalUsers';
+import Capacity from './Tiles/Capacity';
 import UsersGraph from './Tiles/UsersGraph';
 
 import { updatePersonList } from '../../store/personList/actions';
@@ -18,6 +18,7 @@ import { updateFacilityList } from '../../store/facilityList/actions';
 import { FacilityList } from '../../store/facilityList/types';
 
 import useInterval from '@use-it/interval';
+import axios from 'axios';
 
 import { ColumnContainer, Display, LeftSide, TopHalf } from './styled';
 
@@ -57,23 +58,23 @@ const Dashboard: React.FC<DashboardProps> = (
     props.setPage('Dashboard', '/dashboard');
   }, []);
 
-  const fetchData = async () => {
-    const data = await fetch(
+  const fetchPersonData = async () => {
+    const res = await axios.get(
       `${process.env.REACT_APP_API_BASE_URL}/personlist`,
     );
-    return data.json();
+    return res.data;
   };
 
-  const fetchData2 = async () => {
-    const items = await fetch(
+  const fetchFacilityData = async () => {
+    const res = await axios.get(
       `${process.env.REACT_APP_API_BASE_URL}/facility/by/602ea8d423a00b4812b77ee6`,
     );
-    return items.json();
+    return res.data;
   };
 
   const getPersonList = useCallback(() => {
     const fetchPersonList = async () => {
-      const resp = await fetchData();
+      const resp = await fetchPersonData();
       const newPersonListState: PersonList = {
         list: resp.personList,
         size: resp.personListSize,
@@ -86,7 +87,7 @@ const Dashboard: React.FC<DashboardProps> = (
 
   const getFacilityList = useCallback(() => {
     const fetchFacilityList = async () => {
-      const resp = await fetchData2();
+      const resp = await fetchFacilityData();
       const newFacilityListState: FacilityList = {
         currentPopulation: resp.currentCapacity,
         capacity: resp.capacity,
@@ -115,10 +116,10 @@ const Dashboard: React.FC<DashboardProps> = (
             style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
           >
             <ColumnContainer>
-              <TotalUsers />
+              <HalfHourCount />
               <DateTile />
             </ColumnContainer>
-            <HalfHourCount />
+            <Capacity />
           </div>
           <MaskPercTile />
         </TopHalf>
