@@ -6,25 +6,24 @@ import { FONTS } from '../../../../globalStyles';
 export const TileContainer = styled(Card)`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  align-items: center;
+  height: 22.5rem;
   min-width: 20rem;
   background-color: #d8d8d8;
   padding: 15px;
-  text-align: left;
-  align-items: center;
+  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
 `;
 
-export const UserText = styled.h2`
-  margin: 5px;
-  font-size: 20px;
+export const UserText = styled.h3`
   font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
   color: black;
+  margin: 0;
 `;
 
 export const SubContainer = styled.div`
-  margin: 90px 0;
-  display: flex;
+  display: inherit;
   flex-direction: row;
+  padding: 15px;
 `;
 
 export const LegendContainer = styled.div`
@@ -37,7 +36,6 @@ export const PercentageContainer = styled.h4`
   width: 100px;
   margin: 5px 0px 0 20px;
   color: black;
-  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
 `;
 
 export const Legend = styled.div`
@@ -47,12 +45,4 @@ export const Legend = styled.div`
   border-style: solid;
   border-color: ${(props) => props.theme.main};
   font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
-`;
-
-export const GraphContainer = styled.div`
-  position: relative;
-  height: 100px;
-  width: 100px;
-  right: 160px;
-  bottom: 70px;
 `;

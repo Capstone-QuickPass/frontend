@@ -125,7 +125,7 @@ const Dashboard: React.FC<DashboardProps> = (
         </TopHalf>
         <UsersGraph />
       </LeftSide>
-      <RecentUsers list={props.personList} />
+      <RecentUsers />
     </Display>
   );
 };

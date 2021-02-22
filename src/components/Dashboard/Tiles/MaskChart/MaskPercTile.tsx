@@ -8,7 +8,6 @@ import { PieChart, Pie } from 'recharts';
 import {
   TileContainer,
   UserText,
-  GraphContainer,
   SubContainer,
   Legend,
   LegendContainer,
@@ -36,9 +35,9 @@ const mapStateToProps = (state: RootState) => {
 const MaskPercTile = (props: MaskPercTileProps) => {
   const [maskcount, setCount] = useState<number>(0);
 
-  var data = [
-    { name: 'Masks', value: 0, fill: '#33aa33' },
-    { name: 'Non-Mask', value: 0, fill: '#dd4343' },
+  let data = [
+    { name: 'Masks', value: maskcount, fill: '#33aa33' },
+    { name: 'Non-Mask', value: props.size - maskcount, fill: '#dd4343' },
   ];
 
   useEffect(() => {
@@ -63,43 +62,34 @@ const MaskPercTile = (props: MaskPercTileProps) => {
     setCount(count);
   }, 2100);
 
-  useEffect(() => {
-    data = [
-      { name: 'Masks', value: maskcount, fill: '#33aa33' },
-      { name: 'Non-Mask', value: maskcount - props.size, fill: '#dd4343' },
-    ];
-  }, [maskcount]);
-
   return (
     <TileContainer>
       <UserText>Percentage of People Wearing Masks</UserText>
-      <GraphContainer>
-        <PieChart width={400} height={400}>
-          <Pie
-            dataKey="value"
-            startAngle={360}
-            endAngle={0}
-            data={data}
-            cx={200}
-            cy={150}
-            outerRadius={80}
-            label
-          />
-        </PieChart>
-      </GraphContainer>
       <SubContainer>
         <LegendContainer>
           <Legend theme={theme}>Mask On</Legend>
           <Legend theme={{ main: '#dd4343' }}>Mask Off</Legend>
         </LegendContainer>
         <PercentageContainer>
-          {100 -
-            Math.round(
-              (data[1].value / (data[0].value + data[1].value)) * 100,
-            ) +
-            '% of masks on'}
+          {Math.round((data[0].value / props.size) * 100) + '% of masks on'}
         </PercentageContainer>
       </SubContainer>
+      <PieChart
+        width={400}
+        height={400}
+        style={{ marginTop: '-55px', marginLeft: '-25px' }}
+      >
+        <Pie
+          dataKey="value"
+          startAngle={360}
+          endAngle={0}
+          data={data}
+          cx={200}
+          cy={150}
+          outerRadius={80}
+          label
+        />
+      </PieChart>
     </TileContainer>
   );
 };
