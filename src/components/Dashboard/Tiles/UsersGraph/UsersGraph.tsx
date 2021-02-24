@@ -77,6 +77,7 @@ const UsersGraph: React.FC<UsersGraphProps> = (
             dataKey="Users"
             stroke="#cf1322"
             activeDot={{ r: 8 }}
+            strokeWidth={3}
           />
         </LineChart>
       </ResponsiveContainer>

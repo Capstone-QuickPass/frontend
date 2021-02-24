@@ -1,12 +1,9 @@
 import styled from 'styled-components';
-
-import { Card } from '@uifabric/react-cards';
+import { Paper } from '@material-ui/core';
 import { FONTS } from '../../../../globalStyles';
 
-export const TileContainer = styled(Card)`
-  min-height: 25rem;
-  min-width: 100%;
-  background-color: ghostwhite;
+export const TileContainer = styled(Paper)`
+  height: 100%;
   padding: 15px;
   text-align: left;
 `;

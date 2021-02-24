@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
-import { Card } from '@uifabric/react-cards';
+import { Paper } from '@material-ui/core';
 import { FONTS } from '../../../../globalStyles';
 
-export const TileContainer = styled(Card)`
+export const TileContainer = styled(Paper)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 22.5rem;
-  min-width: 20rem;
-  background-color: #d8d8d8;
+  height: 20.5rem;
+  width: 20rem;
   padding: 15px;
   font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
 `;

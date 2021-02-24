@@ -10,5 +10,6 @@ export const Layout = styled.div`
 
 export const BottomLayout = styled.div`
   display: flex;
+  background-color: whitesmoke;
   min-height: 93.1vh;
 `;
