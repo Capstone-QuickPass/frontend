@@ -20,7 +20,7 @@ import moment from 'moment';
 
 import { TileContainer, GraphTitle } from './styled';
 
-import { DUMMY_DATA } from './dummyData';
+import { STARTING_DATA } from './StartingData';
 import DataPoint from './DataPoint';
 import { FONTS } from '../../../../globalStyles';
 
@@ -78,6 +78,7 @@ const UsersGraph: React.FC<UsersGraphProps> = (
             stroke="#cf1322"
             activeDot={{ r: 8 }}
             strokeWidth={3}
+            animationEasing={'ease-in-out'}
           />
         </LineChart>
       </ResponsiveContainer>
@@ -86,7 +87,7 @@ const UsersGraph: React.FC<UsersGraphProps> = (
 };
 
 const getGraphData = (list: person[]) => {
-  const initialData = DUMMY_DATA;
+  const initialData = STARTING_DATA;
   const listOfUsers = list;
   const entryHours = _.chain(listOfUsers)
     .sortBy('time')

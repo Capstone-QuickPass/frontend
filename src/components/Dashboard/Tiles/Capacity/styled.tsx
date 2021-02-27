@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { FONTS } from '../../../../globalStyles';
+import { Paper } from '@material-ui/core';
 
-import { Card } from '@uifabric/react-cards';
-
-export const TileContainer = styled(Card)`
+export const TileContainer = styled(Paper)`
   height: 11.75rem;
   min-width: 100%;
   display: flex;
@@ -11,7 +10,6 @@ export const TileContainer = styled(Card)`
   justify-content: center;
   font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
   background-color: #c73749;
-  color: white;
 `;
 
 export const MaxCapacity = styled.h4`
