@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import useInterval from '@use-it/interval';
 import { RootState } from '../../../../store';
-import { Container } from './styled';
+import { Container, TableContainer } from './styled';
 import { person } from '../../../../store/personList/types';
 import { FONTS } from '../../../../globalStyles';
 import { connect } from 'react-redux';
@@ -40,7 +40,10 @@ const RecentUsers = (props: RecentUsersProps) => {
 
   return (
     <Container>
-      <DataGrid rows={user} columns={columns} loading={user.length === 0} />
+      <h3>Recent Users</h3>
+      <TableContainer>
+        <DataGrid rows={user} columns={columns} loading={user.length === 0} />
+      </TableContainer>
     </Container>
   );
 };

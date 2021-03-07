@@ -17,8 +17,9 @@ import {
 import _ from 'lodash';
 import useInterval from '@use-it/interval';
 import moment from 'moment';
+import { CircularProgress } from '@material-ui/core';
 
-import { TileContainer, GraphTitle } from './styled';
+import { TileContainer, GraphTitle, Loader } from './styled';
 
 import { STARTING_DATA } from './StartingData';
 import DataPoint from './DataPoint';
@@ -34,9 +35,8 @@ const mapStateToProps = (state: RootState) => {
   };
 };
 
-const UsersGraph: React.FC<UsersGraphProps> = (
-  props: UsersGraphProps,
-): ReactElement => {
+const UsersGraph = (props: UsersGraphProps) => {
+  let content;
   const [graphData, setGraphData] = useState<DataPoint[]>();
 
   const updateData = () => {
@@ -44,43 +44,48 @@ const UsersGraph: React.FC<UsersGraphProps> = (
     setGraphData(newData);
   };
 
-  useEffect(() => {
-    updateData();
-    setTimeout(() => {
-      updateData();
-    }, 500);
-  }, []);
-
   useInterval(() => {
     updateData();
   }, 2100);
+
+  if (!graphData) {
+    content = (
+      <Loader>
+        <CircularProgress />
+      </Loader>
+    );
+  } else {
+    content = (
+      <LineChart
+        data={graphData}
+        margin={{
+          top: 5,
+          right: 30,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="hour" tick={{ fontFamily: FONTS.SEGOE_UI_REGULAR }} />
+        <YAxis tick={{ fontFamily: FONTS.SEGOE_UI_REGULAR }} />
+        <Tooltip />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey="Users"
+          stroke="#9254de"
+          activeDot={{ r: 8 }}
+          strokeWidth={3}
+          animationEasing={'ease-in-out'}
+        />
+      </LineChart>
+    );
+  }
 
   return (
     <TileContainer>
       <GraphTitle>Numbers of Users in the Past 24h</GraphTitle>
       <ResponsiveContainer width="95%" height={300}>
-        <LineChart
-          data={graphData}
-          margin={{
-            top: 5,
-            right: 30,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="hour" tick={{ fontFamily: FONTS.SEGOE_UI_REGULAR }} />
-          <YAxis tick={{ fontFamily: FONTS.SEGOE_UI_REGULAR }} />
-          <Tooltip />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="Users"
-            stroke="#cf1322"
-            activeDot={{ r: 8 }}
-            strokeWidth={3}
-            animationEasing={'ease-in-out'}
-          />
-        </LineChart>
+        {content}
       </ResponsiveContainer>
     </TileContainer>
   );
