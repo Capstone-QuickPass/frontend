@@ -8,6 +8,7 @@ import { PieChart, Pie, Legend, Label, LabelList } from 'recharts';
 import { TileContainer, UserText } from './styled';
 import { connect } from 'react-redux';
 import { person } from '../../../../store/personList/types';
+import CountUp from 'react-countup';
 
 const theme = {
   main: '#004d00',
@@ -32,12 +33,12 @@ const MaskPercTile = (props: MaskPercTileProps) => {
     {
       name: 'Masks',
       value: ((maskcount / props.size) * 100) | 0,
-      fill: '#33aa33',
+      fill: '#73d13d',
     },
     {
       name: 'Non-Mask',
       value: (((props.size - maskcount) / props.size) * 100) | 0,
-      fill: '#dd4343',
+      fill: '#ff7875',
     },
   ];
 
@@ -54,8 +55,8 @@ const MaskPercTile = (props: MaskPercTileProps) => {
   }, []);
 
   useInterval(() => {
-    var count = 0;
-    for (var i = 0; i < props.size; i++) {
+    let count = 0;
+    for (let i = 0; i < props.size; i++) {
       if (props.list[i].mask_status === 'Mask') {
         count += 1;
       }
@@ -73,10 +74,10 @@ const MaskPercTile = (props: MaskPercTileProps) => {
           startAngle={360}
           endAngle={0}
           data={data}
+          innerRadius={50}
           outerRadius={80}
-          isAnimationActive={false}
         >
-          <LabelList dataKey="value" />
+          <Label position="center">{`${data[0].value}% Masks`}</Label>
         </Pie>
       </PieChart>
     </TileContainer>
