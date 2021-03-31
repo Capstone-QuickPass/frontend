@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { RootState } from '../../../../store';
 
-import { Column, MaxCapacity, NumberDisplay, TileContainer } from './styled';
+import { TileContainer, Content, Population, BreakLine } from './styled';
 
 interface CapacityProp {
   maxCapacity: number;
@@ -19,15 +19,16 @@ const mapStateToProps = (state: RootState) => {
 const Capacity = (props: CapacityProp) => {
   return (
     <TileContainer>
-      <Column>
-        <MaxCapacity>Max Capacity</MaxCapacity>
-        <NumberDisplay>{props.maxCapacity}</NumberDisplay>
-      </Column>
-      <hr />
-      <Column>
-        <MaxCapacity>Current Population</MaxCapacity>
-        <NumberDisplay>{props.currentPopulation}</NumberDisplay>
-      </Column>
+      <Content>
+        <p>Current Population</p>
+        <Population>{props.currentPopulation}</Population>
+      </Content>
+      <BreakLine />
+      <Content>
+        <p>
+          Max Capacity <b>{props.maxCapacity}</b>
+        </p>
+      </Content>
     </TileContainer>
   );
 };

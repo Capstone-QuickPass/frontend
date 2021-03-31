@@ -1,4 +1,5 @@
 import { createTheme } from 'office-ui-fabric-react';
+import { createGlobalStyle } from 'styled-components';
 
 export const COLORS = {
   BLACK: '#000000',
@@ -21,6 +22,8 @@ export const COLORS = {
   BLUE3: '#5390FF',
   BORDER: '#E6E6E6',
   BORDER2: '#C3C3C3',
+  LIME: '#7cb305',
+  CYAN: '#08979c',
 };
 
 export const BREAK = {
@@ -87,5 +90,6 @@ export const THEME = {
 export const FONTS = {
   SEGOE_UI_REGULAR: 'Segoe UI Regular, Helvetica Neue, sans-serif',
   SEGOE_UI_SEMI_BOLD: 'Segoe UI Semibold, Helvetica Neue, sans-serif',
+  SEGOE_UI_BOLD: 'Segoe UI Bold, Helvetica Neue, sans-serif',
   COURIER_NEW: 'Courier New, Courier, monospace',
 };

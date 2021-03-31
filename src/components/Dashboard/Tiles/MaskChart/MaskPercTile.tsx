@@ -1,4 +1,4 @@
-import React, { Props, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { RootState } from '../../../../store';
 

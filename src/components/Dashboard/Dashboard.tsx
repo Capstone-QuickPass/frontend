@@ -118,9 +118,9 @@ const Dashboard = (props: DashboardProps) => {
           >
             <ColumnContainer>
               <HalfHourCount />
-              <DateTile />
+              <Capacity />
             </ColumnContainer>
-            <Capacity />
+            <DateTile />
           </div>
           <MaskPercTile />
         </TopHalf>

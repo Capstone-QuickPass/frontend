@@ -1,30 +1,22 @@
-import React from 'react';
+import useInterval from '@use-it/interval';
+import React, { useState } from 'react';
+import moment from 'moment';
 
 import { TileContainer, DateText, TimeText } from './styled';
 
-class DateTile extends React.Component<{}, any> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      currTime: null,
-    };
-  }
-  componentDidMount() {
-    setInterval(() => {
-      this.setState({
-        currTime: new Date().toLocaleTimeString(),
-      });
-    }, 1000);
-  }
+const DateTile = () => {
+  const [currTime, setTime] = useState<string>();
 
-  render() {
-    return (
-      <TileContainer>
-        <DateText>Date: {new Date().toLocaleDateString()}</DateText>
-        <TimeText>Time: {this.state.currTime}</TimeText>
-      </TileContainer>
-    );
-  }
-}
+  useInterval(() => {
+    setTime(moment().format('LTS'));
+  }, 1000);
+
+  return (
+    <TileContainer>
+      <DateText>{moment().format('dddd, MMMM Do YYYY')}</DateText>
+      <TimeText>{currTime}</TimeText>
+    </TileContainer>
+  );
+};
 
 export default DateTile;

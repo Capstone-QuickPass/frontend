@@ -4,7 +4,7 @@ import { FONTS } from '../../../../globalStyles';
 
 export const TileContainer = styled(Paper)`
   height: 100%;
-  padding: 15px;
+  padding: 4%;
   text-align: left;
 `;
 
