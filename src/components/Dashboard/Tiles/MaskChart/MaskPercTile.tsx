@@ -3,18 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { RootState } from '../../../../store';
 
 import useInterval from '@use-it/interval';
-import { PieChart, Pie } from 'recharts';
+import { PieChart, Pie, Legend, Label, LabelList } from 'recharts';
 
-import {
-  TileContainer,
-  UserText,
-  SubContainer,
-  Legend,
-  LegendContainer,
-  PercentageContainer,
-} from './styled';
+import { TileContainer, UserText } from './styled';
 import { connect } from 'react-redux';
 import { person } from '../../../../store/personList/types';
+import CountUp from 'react-countup';
 
 const theme = {
   main: '#004d00',
@@ -36,8 +30,16 @@ const MaskPercTile = (props: MaskPercTileProps) => {
   const [maskcount, setCount] = useState<number>(0);
 
   let data = [
-    { name: 'Masks', value: maskcount, fill: '#33aa33' },
-    { name: 'Non-Mask', value: props.size - maskcount, fill: '#dd4343' },
+    {
+      name: 'Masks',
+      value: ((maskcount / props.size) * 100) | 0,
+      fill: '#73d13d',
+    },
+    {
+      name: 'Non-Mask',
+      value: (((props.size - maskcount) / props.size) * 100) | 0,
+      fill: '#ff7875',
+    },
   ];
 
   useEffect(() => {
@@ -53,8 +55,8 @@ const MaskPercTile = (props: MaskPercTileProps) => {
   }, []);
 
   useInterval(() => {
-    var count = 0;
-    for (var i = 0; i < props.size; i++) {
+    let count = 0;
+    for (let i = 0; i < props.size; i++) {
       if (props.list[i].mask_status === 'Mask') {
         count += 1;
       }
@@ -65,30 +67,18 @@ const MaskPercTile = (props: MaskPercTileProps) => {
   return (
     <TileContainer>
       <UserText>Percentage of People Wearing Masks</UserText>
-      <SubContainer>
-        <LegendContainer>
-          <Legend theme={theme}>Mask On</Legend>
-          <Legend theme={{ main: '#dd4343' }}>Mask Off</Legend>
-        </LegendContainer>
-        <PercentageContainer>
-          {Math.round((data[0].value / props.size) * 100) + '% of masks on'}
-        </PercentageContainer>
-      </SubContainer>
-      <PieChart
-        width={400}
-        height={400}
-        style={{ marginTop: '-55px', marginLeft: '-25px' }}
-      >
+      <PieChart width={250} height={250}>
+        <Legend verticalAlign="bottom" />
         <Pie
           dataKey="value"
           startAngle={360}
           endAngle={0}
           data={data}
-          cx={200}
-          cy={150}
+          innerRadius={50}
           outerRadius={80}
-          label
-        />
+        >
+          <Label position="center">{`${data[0].value}% Masks`}</Label>
+        </Pie>
       </PieChart>
     </TileContainer>
   );

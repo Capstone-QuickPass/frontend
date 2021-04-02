@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { connect } from 'react-redux';
 import { RootState } from '../../../../store';
@@ -8,12 +8,7 @@ import _ from 'lodash';
 import useInterval from '@use-it/interval';
 import moment from 'moment';
 
-import {
-  TileContainer,
-  RecentCountTitle,
-  TimeRefresh,
-  CountIncrease,
-} from './styled';
+import { TileContainer, Content, Users, BreakLine } from './styled';
 
 interface HalfHourCountProps {
   personList: person[];
@@ -25,9 +20,7 @@ const mapStateToProps = (state: RootState) => {
   };
 };
 
-const HalfHourCount: React.FC<HalfHourCountProps> = (
-  props: HalfHourCountProps,
-): ReactElement => {
+const HalfHourCount = (props: HalfHourCountProps) => {
   const [past30Count, setPast30Count] = useState<number>(0);
 
   useEffect(() => {
@@ -44,9 +37,16 @@ const HalfHourCount: React.FC<HalfHourCountProps> = (
 
   return (
     <TileContainer>
-      <RecentCountTitle>Users Entered</RecentCountTitle>
-      <TimeRefresh>past 30 mins</TimeRefresh>
-      <CountIncrease>{past30Count}</CountIncrease>
+      <Content>
+        <p>Users Entered</p>
+        <Users>{past30Count}</Users>
+      </Content>
+      <BreakLine />
+      <Content>
+        <p>
+          Past <b>30 minutes</b>
+        </p>
+      </Content>
     </TileContainer>
   );
 };

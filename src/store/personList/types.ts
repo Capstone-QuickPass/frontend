@@ -1,5 +1,6 @@
 export interface person {
   _id: number;
+  id: number;
   photo: Int16Array;
   time: string;
   score: number;

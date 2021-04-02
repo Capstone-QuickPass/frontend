@@ -2,21 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 import useInterval from '@use-it/interval';
 import { RootState } from '../../../../store';
-import {
-  Container,
-  GridContainer,
-  HeaderList,
-  HeaderUl,
-  Separator,
-  UserContainer,
-  UserTitle,
-} from './styled';
+import { Container, TableContainer } from './styled';
 import { person } from '../../../../store/personList/types';
 import { FONTS } from '../../../../globalStyles';
 import { connect } from 'react-redux';
-
-const HeaderItems = ['User', 'Mask Status', 'Precision Score', 'Time'];
-
+import { DataGrid } from '@material-ui/data-grid';
 interface RecentUsersProps {
   list: person[];
 }
@@ -27,6 +17,13 @@ const mapStateToProps = (state: RootState) => {
     list: state.person.list,
   };
 };
+
+const columns = [
+  { field: 'id', headerName: 'User ID', width: 225 },
+  { field: 'mask_status', headerName: 'Mask Status', width: 150 },
+  { field: 'time', headerName: 'Time' },
+  { field: 'score', headerName: 'Precision Score', width: 175 },
+];
 
 const RecentUsers = (props: RecentUsersProps) => {
   const [user, setUser] = useState<person[]>([]);
@@ -43,46 +40,10 @@ const RecentUsers = (props: RecentUsersProps) => {
 
   return (
     <Container>
-      <UserTitle>Recent Users</UserTitle>
-      <Separator />
-      <div style={{ marginTop: '0px' }}>
-        <HeaderUl>
-          {HeaderItems.map((item, index) => {
-            return (
-              <div key={index}>
-                <HeaderList>{item}</HeaderList>
-              </div>
-            );
-          })}
-        </HeaderUl>
-      </div>
-      <Separator />
-      <GridContainer>
-        {user ? (
-          <div>
-            {user.map((member, index) => {
-              return (
-                <UserContainer key={index}>
-                  <p style={{ fontFamily: FONTS.SEGOE_UI_REGULAR }}>
-                    {member._id}
-                  </p>
-                  <p style={{ fontFamily: FONTS.SEGOE_UI_REGULAR }}>
-                    {member.mask_status}
-                  </p>
-                  <p style={{ fontFamily: FONTS.SEGOE_UI_REGULAR }}>
-                    {member.score}
-                  </p>
-                  <p style={{ fontFamily: FONTS.SEGOE_UI_REGULAR }}>
-                    {member.time}
-                  </p>
-                </UserContainer>
-              );
-            })}
-          </div>
-        ) : (
-          <React.Fragment />
-        )}
-      </GridContainer>
+      <h3>Recent Users</h3>
+      <TableContainer>
+        <DataGrid rows={user} columns={columns} loading={user.length === 0} />
+      </TableContainer>
     </Container>
   );
 };

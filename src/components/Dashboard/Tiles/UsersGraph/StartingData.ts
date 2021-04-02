@@ -1,4 +1,4 @@
-export const DUMMY_DATA = [
+export const STARTING_DATA = [
   {
     hour: '0',
     Users: 0,

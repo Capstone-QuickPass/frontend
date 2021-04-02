@@ -1,30 +1,25 @@
 import styled from 'styled-components';
-import { FONTS } from '../../../../globalStyles';
+import { FONTS, COLORS } from '../../../../globalStyles';
+import { Paper } from '@material-ui/core';
 
-import { Card } from '@uifabric/react-cards';
-
-export const TileContainer = styled(Card)`
-  min-height: 130px;
-  width: 10rem;
-  background-color: #296157;
-  padding: 15px;
+export const TileContainer = styled(Paper)`
+  height: 100%;
+  min-width: 90%;
   text-align: left;
-
+  padding: 5%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
+  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
 `;
 
-export const DateText = styled.div`
-  color: white;
+export const DateText = styled.p`
+  margin: 0;
   font-size: 20px;
-  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
-  margin: 10px;
+  color: ${COLORS.GREY3};
 `;
 
-export const TimeText = styled.div`
-  color: white;
-  font-size: 20px;
-  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
-  margin: 20px 10px;
+export const TimeText = styled.p`
+  margin: 0;
+  font-size: 50px;
 `;

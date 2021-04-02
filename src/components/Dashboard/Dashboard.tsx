@@ -21,7 +21,9 @@ import useInterval from '@use-it/interval';
 import axios from 'axios';
 
 import { ColumnContainer, Display, LeftSide, TopHalf } from './styled';
+import { CircularProgress } from '@material-ui/core';
 
+let initializedData: boolean = false;
 interface DashboardProps {
   personList: person[];
   personListSize: number;
@@ -51,9 +53,7 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-const Dashboard: React.FC<DashboardProps> = (
-  props: DashboardProps,
-): ReactElement => {
+const Dashboard = (props: DashboardProps) => {
   useEffect(() => {
     props.setPage('Dashboard', '/dashboard');
   }, []);
@@ -101,6 +101,7 @@ const Dashboard: React.FC<DashboardProps> = (
   useEffect(() => {
     getPersonList();
     getFacilityList();
+    initializedData = true;
   }, [getPersonList, getFacilityList]);
 
   useInterval(() => {
@@ -117,9 +118,9 @@ const Dashboard: React.FC<DashboardProps> = (
           >
             <ColumnContainer>
               <HalfHourCount />
-              <DateTile />
+              <Capacity />
             </ColumnContainer>
-            <Capacity />
+            <DateTile />
           </div>
           <MaskPercTile />
         </TopHalf>
