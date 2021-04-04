@@ -23,3 +23,15 @@ export const Loader = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const BusiestText = styled.p`
+  font-size: 20px;
+  color: black;
+  font-family: ${FONTS.SEGOE_UI_SEMI_BOLD};
+  margin-top: 10px 5px;
+`;
+
+export const HorizontalDivider = styled.hr`
+  height: 5;
+  color: black;
+`;

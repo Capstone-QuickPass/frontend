@@ -19,7 +19,13 @@ import useInterval from '@use-it/interval';
 import moment from 'moment';
 import { CircularProgress } from '@material-ui/core';
 
-import { TileContainer, GraphTitle, Loader } from './styled';
+import {
+  TileContainer,
+  GraphTitle,
+  Loader,
+  BusiestText,
+  HorizontalDivider,
+} from './styled';
 
 import { STARTING_DATA } from './StartingData';
 import DataPoint from './DataPoint';
@@ -36,7 +42,7 @@ const mapStateToProps = (state: RootState) => {
 };
 
 const UsersGraph = (props: UsersGraphProps) => {
-  let content;
+  let content, maxUser, maxHour;
   const [graphData, setGraphData] = useState<DataPoint[]>();
 
   const updateData = () => {
@@ -55,6 +61,9 @@ const UsersGraph = (props: UsersGraphProps) => {
       </Loader>
     );
   } else {
+    maxUser = Math.max(...graphData.map((x) => x.Users), 0);
+    maxHour = Math.max(...graphData.map((x) => parseInt(x.hour)), 0);
+
     content = (
       <LineChart
         data={graphData}
@@ -87,6 +96,11 @@ const UsersGraph = (props: UsersGraphProps) => {
       <ResponsiveContainer width="95%" height={300}>
         {content}
       </ResponsiveContainer>
+      <HorizontalDivider />
+      <BusiestText>
+        <strong>Busiest Hour</strong> {maxHour}:00h | <strong>Average:</strong>{' '}
+        {maxUser} user(s)
+      </BusiestText>
     </TileContainer>
   );
 };
