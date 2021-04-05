@@ -93,7 +93,7 @@ const UsersGraph = (props: UsersGraphProps) => {
   return (
     <TileContainer>
       <GraphTitle>Numbers of Users in the Past 24h</GraphTitle>
-      <ResponsiveContainer width="95%" height={300}>
+      <ResponsiveContainer width="95%" height={250}>
         {content}
       </ResponsiveContainer>
       <HorizontalDivider />
