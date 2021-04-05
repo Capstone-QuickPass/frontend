@@ -87,6 +87,12 @@ const Sidebar: React.FC = (): ReactElement => {
     history.push(element!.url);
   };
 
+  const chatBot = () => {
+    window.open(
+      'https://quickpassbot.loca.lt/guest/conversations/production/7ec4566adfae48ffbd7dd0682e810b5f',
+    );
+  };
+
   return (
     <OuterSideBarWrapper>
       <MainItems>
@@ -97,7 +103,7 @@ const Sidebar: React.FC = (): ReactElement => {
         />
       </MainItems>
       <ChatBotContainer>
-        <ChatButton>QuickPass BI Chatbot</ChatButton>
+        <ChatButton onClick={chatBot}>QuickPass BI Chatbot</ChatButton>
       </ChatBotContainer>
     </OuterSideBarWrapper>
   );
