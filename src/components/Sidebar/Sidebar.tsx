@@ -4,7 +4,13 @@ import { useHistory } from 'react-router-dom';
 import { INavLink, INavLinkGroup, INavStyles } from '@fluentui/react';
 
 import { COLORS, FONTS } from '../../globalStyles';
-import { MainItems, NavMenu, OuterSideBarWrapper } from './styled';
+import {
+  MainItems,
+  NavMenu,
+  OuterSideBarWrapper,
+  ChatButton,
+  ChatBotContainer,
+} from './styled';
 
 const navMenuLinksProps: Partial<INavStyles> = {
   link: {
@@ -90,6 +96,9 @@ const Sidebar: React.FC = (): ReactElement => {
           onLinkClick={onNavClick}
         />
       </MainItems>
+      <ChatBotContainer>
+        <ChatButton>QuickPass BI Chatbot</ChatButton>
+      </ChatBotContainer>
     </OuterSideBarWrapper>
   );
 };

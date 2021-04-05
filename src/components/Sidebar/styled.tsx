@@ -31,3 +31,28 @@ export const NavMenu = styled(Nav)`
     color: white;
   }]
 `;
+
+export const ChatBotContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100px;
+  margin: 0 7px;
+`;
+
+export const ChatButton = styled.button`
+  width: 50%;
+  background-color: white;
+  color: #0091ea;
+  border-radius: 5px;
+  outline: 0;
+  margin: 10px 0px;
+  transition: ease background-color 250ms;
+  cursor: pointer;
+  /* text-transform: uppercase; */
+  /* box-shadow: 0px 1px 1px white; */
+  /* padding: 5px 15px; */
+  &:hover {
+    background-color: #add8e6;
+  }
+`;
