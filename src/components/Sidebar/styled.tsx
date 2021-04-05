@@ -34,24 +34,21 @@ export const NavMenu = styled(Nav)`
 
 export const ChatBotContainer = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 100px;
   margin: 0 7px;
 `;
 
 export const ChatButton = styled.button`
-  width: 50%;
-  background-color: white;
-  color: #0091ea;
+  width: 80%;
+  background-color: #096dd9;
+  color: white;
+  border: 1px solid white;
   border-radius: 5px;
-  outline: 0;
-  margin: 10px 0px;
   transition: ease background-color 250ms;
   cursor: pointer;
-  /* text-transform: uppercase; */
-  /* box-shadow: 0px 1px 1px white; */
-  /* padding: 5px 15px; */
+  padding: 5px 10px;
   &:hover {
     background-color: #add8e6;
   }
