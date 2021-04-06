@@ -92,7 +92,13 @@ const Dashboard = (props: DashboardProps) => {
         currentPopulation: resp.currentCapacity,
         capacity: resp.capacity,
       };
-      props.updateFacilityList(newFacilityListState);
+      if (resp.currentCapacity >= 0) {
+        props.updateFacilityList(newFacilityListState);
+      } else {
+        newFacilityListState.currentPopulation = 0;
+        newFacilityListState.capacity = resp.capacity;
+        props.updateFacilityList(newFacilityListState);
+      }
     };
 
     fetchFacilityList();
